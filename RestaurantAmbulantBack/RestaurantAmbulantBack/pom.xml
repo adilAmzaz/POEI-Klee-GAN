@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>poeiklee.final</groupId>
-	<artifactId>RestaurantAmbulant</artifactId>
+	<artifactId>RestaurantAmbulantBack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>RestaurantAmbulant</name>
-	<description>Description</description>
+	<name>RestaurantAmbulantBack</name>
+	<description>Projet de fin de formation POEI Klee : Site pour Restaurant Ambulant (Authors: Adil, Gabriel, Noé - 2019)</description>
 
 	<properties>
 		<java.version>1.8</java.version>
