@@ -1,17 +1,20 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
 
 	@Id
 	private int userId;
+	@Column(nullable=false,unique = true, length = 50)
 	private String email;
 	private String password;
 	private String phone;
-	private String adress;
+	private String address;
 	private String zipcode;
 	private String city;
 	
@@ -23,7 +26,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.adress = adress;
+		this.address = adress;
 		this.zipcode = zipcode;
 		this.city = city;
 	}
@@ -57,10 +60,10 @@ public class User {
 		this.phone = phone;
 	}
 	public String getAdress() {
-		return adress;
+		return address;
 	}
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 	public String getZipcode() {
 		return zipcode;
