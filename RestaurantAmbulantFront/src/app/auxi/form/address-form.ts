@@ -7,9 +7,9 @@ export class AddressForm extends FormGroup
     {
         super(
             {
-                address: new FormControl(),
-                zipCode: new FormControl(),
-                city: new FormControl()
+                address: new FormControl(""),
+                zipCode: new FormControl(""),
+                city: new FormControl("")
             });
     }
 }
