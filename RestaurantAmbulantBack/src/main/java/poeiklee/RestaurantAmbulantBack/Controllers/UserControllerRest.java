@@ -2,12 +2,20 @@ package poeiklee.RestaurantAmbulantBack.Controllers;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -101,7 +109,84 @@ public class UserControllerRest {
     	return individualRepo.findByEmail(email);
     }
     
+    
+	@PostMapping("/addIndividual")
+	public ResponseEntity<Object> addIndividual(@Valid @RequestBody Individual reqIndividual ) {
 
+		if(reqIndividual.getEmail().isEmpty())
+			return  new ResponseEntity<>("Email Obligaory", HttpStatus.BAD_REQUEST);
+
+		individualRepo.save(reqIndividual);
+		return new ResponseEntity<>("added successfully",HttpStatus.OK);
+	}
+	
+	@PostMapping("/addCompany")
+	public ResponseEntity<Object> addCompany(@Valid @RequestBody Company reqCompany ) {
+
+		if(reqCompany.getEmail().isEmpty())
+			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
+
+		companyRepo.save(reqCompany);
+		return new ResponseEntity<>("added successfully",HttpStatus.OK);
+	}
+
+	@DeleteMapping("/deleteuser")
+	ResponseEntity<Object> deleteEmployee(@PathVariable int id) {
+		Optional<User> u = userRepo.findById(id);
+		if(u.isPresent()) {
+			userRepo.deleteById(id);
+			return new ResponseEntity<>("user deleted"+u.toString(),HttpStatus.OK);
+		}
+		return new ResponseEntity<>("user not found",HttpStatus.OK);
+	}
+	
+	@PutMapping("/modifyindividual/{id}")
+	ResponseEntity<?> replaceIndividual(@RequestBody Individual newUser, @PathVariable int id)  {
+		 Optional<Company> company;
+		 Optional<Individual> individual;
+		/*if(newUser instanceof Company) {
+			company=  companyRepo.findById(id);
+			if(!company.isPresent())
+				return ResponseEntity.notFound().build();
+			newUser.setUserId(id);
+			companyRepo.save((Company) newUser);
+			return new ResponseEntity<>("new user added successfully : "+(Company)newUser,HttpStatus.OK);
+		}*/
+		if(newUser instanceof Individual) {
+			individual = individualRepo.findById(id);
+			if(!individual.isPresent())
+				  return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
+			newUser.setUserId(id);
+			individualRepo.save((Individual)newUser);
+			return new ResponseEntity<>("new user added successfully : "+(Individual)newUser,HttpStatus.OK);
+		}
+	  return new ResponseEntity<>("Accept only Individual entity",HttpStatus.BAD_REQUEST);
+
+	}
+	
+	@PutMapping("/modifycompany/{id}")
+	ResponseEntity<?> replaceCompany(@RequestBody Company newUser, @PathVariable int id)  {
+		 Optional<Company> company;
+		 Optional<Individual> individual;
+		if(newUser instanceof Company) {
+			company=  companyRepo.findById(id);
+			if(!company.isPresent())
+				return ResponseEntity.notFound().build();
+			newUser.setUserId(id);
+			companyRepo.save((Company) newUser);
+			return new ResponseEntity<>("new user added successfully : "+(Company)newUser,HttpStatus.OK);
+		}
+		/*if(newUser instanceof Individual) {
+			individual = individualRepo.findById(id);
+			if(!individual.isPresent())
+				  return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
+			newUser.setUserId(id);
+			individualRepo.save((Individual)newUser);
+			return new ResponseEntity<>("new user added successfully : "+(Individual)newUser,HttpStatus.OK);
+		}*/
+	  return new ResponseEntity<>("Accept only  company entity",HttpStatus.BAD_REQUEST);
+
+	}
 
     
 }
