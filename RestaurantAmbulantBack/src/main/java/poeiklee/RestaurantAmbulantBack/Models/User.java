@@ -3,7 +3,6 @@ package poeiklee.RestaurantAmbulantBack.Models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
