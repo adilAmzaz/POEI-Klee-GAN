@@ -62,7 +62,6 @@ export class SignUpComponent implements OnInit {
     this._signInAttempted = true;
     if (this.userForm.controls['email'].valid && this.userForm.controls['password'].valid)
       console.log("Sign-in called.");
-    console.log("The form is invalid: ", this.userForm.invalid);
   }
 
   isCompany(): boolean
