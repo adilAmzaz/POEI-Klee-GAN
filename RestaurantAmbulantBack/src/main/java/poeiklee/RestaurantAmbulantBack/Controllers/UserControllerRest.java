@@ -113,8 +113,10 @@ public class UserControllerRest {
 	@PostMapping("/addIndividual")
 	public ResponseEntity<Object> addIndividual(@Valid @RequestBody Individual reqIndividual ) {
 
-		if(reqIndividual.getEmail().isEmpty())
+		if(reqIndividual.getEmail().isEmpty() )
 			return  new ResponseEntity<>("Email Obligaory", HttpStatus.BAD_REQUEST);
+		if( individualRepo.findById(reqIndividual.getUserId()).isPresent() )
+			return  new ResponseEntity<>("Id alredy exist", HttpStatus.BAD_REQUEST);
 
 		individualRepo.save(reqIndividual);
 		return new ResponseEntity<>("added successfully",HttpStatus.OK);
@@ -131,7 +133,7 @@ public class UserControllerRest {
 	}
 
 	@DeleteMapping("/deleteuser")
-	ResponseEntity<Object> deleteEmployee(@PathVariable int id) {
+	ResponseEntity<Object> deleteUser(@PathVariable int id) {
 		Optional<User> u = userRepo.findById(id);
 		if(u.isPresent()) {
 			userRepo.deleteById(id);
