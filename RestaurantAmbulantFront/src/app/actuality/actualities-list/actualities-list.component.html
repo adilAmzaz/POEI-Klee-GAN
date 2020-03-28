@@ -1,0 +1,36 @@
+<div class="container-fluid bg-light" style="min-height: 100vh">
+    <div class="mx-auto" style="max-width: 1100px;">
+        <h3 class="text-center pt-3 mb-4" style="color: #aaa; font-weight: 700; font-size: 50px; text-shadow: 0 2px 5px black;">Actualités</h3>
+        <ul *ngIf="pages>0" class="pagination justify-content-center pt-2 mb-4 sticky-top">
+            <li class="page-item" [ngClass]="{'disabled' : page==0}">
+                <button class="page-link" (click)="previousPage()"><b>&#8678;</b> Page précédente</button>
+            </li>
+            <li *ngFor="let c of Arr(pages+1).fill(1); let i = index" class="page-item" [ngClass]="{'active' : i==page}">
+                <button class="page-link" (click)="newPage(i)">{{i+1}}</button>
+            </li>
+            <li class="page-item" [ngClass]="{'disabled' : page==pages}">
+                <button class="page-link" (click)="nextPage()">Page suivante <b>&#8680;</b></button>
+            </li>
+        </ul>
+        <div *ngFor="let actuality of actualities" class="card mb-4 shadow-sm">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <img src="{{endPoint}}{{actuality.imageRelativePath}}" 
+                        class="img-fluid rounded-left" alt="" style="height: 250px; width: 300px; cursor: pointer; object-fit: cover">
+                </div>
+                <div class="col">
+                    <div class="card-block p-4">
+                        <h4 class="card-title">
+                            <a [routerLink]="['/actualities/actuality',actuality.actualityId]" class="stretched-link">{{actuality.title}}</a>
+                        </h4>
+                        <p style="font-size: 18px;">
+                            <span class="badge badge-primary">{{actuality.publicationDate | date:"dd/MM/yyyy"}}</span>
+                            <span class="badge badge-success ml-1">{{actuality.publicationDate | date:"hh:mm"}}</span>
+                        </p>
+                        <p class="card-text">{{actuality.catchParagraph}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
