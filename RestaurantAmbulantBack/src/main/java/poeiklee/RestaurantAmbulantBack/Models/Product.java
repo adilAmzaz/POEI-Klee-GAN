@@ -1,6 +1,13 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -11,11 +18,21 @@ public class Product {
 	private String composition;
 	private double price;
 	private int stock;
-	
-	
+	private int count=0;
+	@OneToMany(
+		    mappedBy = "command",
+		    cascade = CascadeType.ALL,
+		    orphanRemoval = true
+		)
+	List<CommandLine> commandLine;
+	@ManyToMany
+	List<Meal> meals;
+	@ManyToMany
+	@Enumerated(EnumType.STRING)
+	List<DayProduct> days;
 	public Product()
 	{
-		
+
 	}
 
 
@@ -27,6 +44,39 @@ public class Product {
 		this.composition = composition;
 		this.price = price;
 		this.stock = stock;
+	}
+	public List<CommandLine> getCommandLine() {
+		return commandLine;
+	}
+
+
+	public void setCommandLine(List<CommandLine> commandLine) {
+		this.commandLine = commandLine;
+	}
+
+
+	public List<Meal> getMeals() {
+		return meals;
+	}
+
+
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
+	}
+
+
+	private void incrementCount()
+	{
+		count++;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 

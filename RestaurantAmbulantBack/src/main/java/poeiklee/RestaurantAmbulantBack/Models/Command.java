@@ -1,12 +1,15 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Command {
@@ -24,6 +27,12 @@ public class Command {
 	private String address;
 	private String zipecode;
 	private String city;
+	@OneToMany(
+		    mappedBy = "command",
+		    cascade = CascadeType.ALL,
+		    orphanRemoval = true
+		)
+	List<CommandLine> commandLine;
 	
 
 	
@@ -44,6 +53,14 @@ public class Command {
 		this.address = address;
 		this.zipecode = zipecode;
 		this.city = city;
+	}
+
+	public List<CommandLine> getCommandLine() {
+		return commandLine;
+	}
+
+	public void setCommandLine(List<CommandLine> commandLine) {
+		this.commandLine = commandLine;
 	}
 
 	public int getCommandId() {
