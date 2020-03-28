@@ -1,9 +1,12 @@
-<ngb-carousel *ngIf="actualities.length" class="mx-auto" style="width: {{width}}; height: {{height}}; border: none; cursor: pointer;" 
-        [keyboard]="false" [pauseOnHover]="true" [interval]="3000" [showNavigationArrows]="false" [showNavigationIndicators]="false"
+<ngb-carousel *ngIf="actualities.length" class="mx-auto" 
+        style="width: {{width}}; height: {{height}}; border: none; cursor: pointer;" 
+        [keyboard]="false" [pauseOnHover]="true" [interval]="3000" 
+        [showNavigationArrows]="false" [showNavigationIndicators]="false"
         #currSlide (click)="onSlideClicked(currSlide)">
-    <ng-template *ngFor="let actuality of actualities; let i index" ngbSlide [id]="actuality.actualityId">
+    <ng-template *ngFor="let actuality of actualities" ngbSlide [id]="actuality.actualityId">
         <div class="picsum-img-wrapper">
-            <img src="{{endPoint}}{{actuality.imageRelativePath}}" alt="" style="width: {{width}}; height: {{height}}; object-fit: cover">
+            <img src="{{endPoint}}{{actuality.imageRelativePath}}" alt="" 
+                    style="width: {{width}}; height: {{height}}; object-fit: cover">
         </div>
         <div class="carousel-caption">
             <h4>{{actuality.title}}</h4>

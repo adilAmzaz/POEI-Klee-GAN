@@ -14,11 +14,11 @@
         </ul>
         <div *ngFor="let actuality of actualities" class="card mb-4 shadow-sm">
             <div class="row no-gutters">
-                <div class="col-auto">
+                <div class="col-sm-auto">
                     <img src="{{endPoint}}{{actuality.imageRelativePath}}" 
                         class="img-fluid rounded-left" alt="" style="height: 250px; width: 300px; cursor: pointer; object-fit: cover">
                 </div>
-                <div class="col">
+                <div class="col-sm">
                     <div class="card-block p-4">
                         <h4 class="card-title">
                             <a [routerLink]="['/actualities/actuality',actuality.actualityId]" class="stretched-link">{{actuality.title}}</a>
