@@ -2,12 +2,15 @@ package poeiklee.RestaurantAmbulantBack.Models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	@Column(nullable=false,unique = true, length = 50)
 	private String email;
@@ -19,9 +22,8 @@ public class User {
 	
 	
 	
-	public User(int userId, String email, String password, String phone, String adress, String zipcode, String city) {
+	public User(String email, String password, String phone, String adress, String zipcode, String city) {
 		super();
-		this.userId = userId;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
@@ -36,9 +38,6 @@ public class User {
 	}
 	public int getUserId() {
 		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	public String getEmail() {
 		return email;
@@ -58,10 +57,10 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAdress() {
+	public String getAddress() {
 		return address;
 	}
-	public void setAdress(String adress) {
+	public void setAddress(String adress) {
 		this.address = adress;
 	}
 	public String getZipcode() {
@@ -87,8 +86,8 @@ public class User {
 		builder.append(getPassword());
 		builder.append(", getPhone()=");
 		builder.append(getPhone());
-		builder.append(", getAdress()=");
-		builder.append(getAdress());
+		builder.append(", getAddress()=");
+		builder.append(getAddress());
 		builder.append(", getZipcode()=");
 		builder.append(getZipcode());
 		builder.append(", getCity()=");

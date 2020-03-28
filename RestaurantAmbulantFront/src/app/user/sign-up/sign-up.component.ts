@@ -33,6 +33,7 @@ export class SignUpComponent implements OnInit {
       });
     this.userForm.controls['isCompany'].setValue(false);
     this.userForm.controls['isFemale'].setValue(true);
+    this.userForm.controls['birthDate'].setValue(Date.now());
     
     //this.userForm.valueChanges.subscribe()
   }
@@ -50,8 +51,8 @@ export class SignUpComponent implements OnInit {
       lastName: new FormControl(""),
       addressForm: new AddressForm(),
       telephone: new FormControl(""),
-      birthDate: new FormControl(),
-      isFemale: new FormControl(null)
+      birthDate: new FormControl(null),
+      isFemale: new FormControl(null, [Validators.required])
       
     }
   )
@@ -60,7 +61,7 @@ export class SignUpComponent implements OnInit {
   signIn(): void
   {
     this._signInAttempted = true;
-    if (this.userForm.controls['email'].valid && this.userForm.controls['password'].valid)
+    if (!this.userForm.invalid)
       console.log("Sign-in called.");
   }
 
@@ -87,7 +88,20 @@ export class SignUpComponent implements OnInit {
     return "";
     
   }
+  // checkFormGroup(formGroup: FormGroup, errorCode: string): boolean
+  // {
+  //   let hasError: boolean = true;
+  //   Object.keys(formGroup.controls).forEach(
+  //     (key) =>
+  //     {
+  //       console.log(key, ': ', !formGroup.controls[key].hasError(errorCode))
+  //       hasError = hasError || !formGroup.controls[key].hasError(errorCode);
+  //     }
+  //   );
+  //   return hasError;
+  // }
 }
+
 
 // export const validatorMail: ValidatorFn = (control) =>
 // {

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class Company extends User {
 
 	private String name;
-	public Company(int userId, String email, String password, String phone, String adress, String zipcode,
+	public Company(String email, String password, String phone, String adress, String zipcode,
 			String city,String name) {
-		super(userId, email, password, phone, adress, zipcode, city);
+		super(email, password, phone, adress, zipcode, city);
 		this.name = name;
 	}
 	

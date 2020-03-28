@@ -17,9 +17,9 @@ public class Individual extends User {
 	{
 		
 	}
-	public Individual(int userId, String email, String password, String phone, String adress, String zipcode,
+	public Individual(String email, String password, String phone, String adress, String zipcode,
 			String city, String lastName, String firstName, boolean female, LocalDate birthday,boolean adminRights) {
-		super(userId, email, password, phone, adress, zipcode, city);
+		super(email, password, phone, adress, zipcode, city);
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.female = female;
@@ -44,10 +44,10 @@ public class Individual extends User {
 	public void setFemale(boolean female) {
 		this.female = female;
 	}
-	public LocalDate getBirthday() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthday(LocalDate birthday) {
+	public void setBirthDate(LocalDate birthday) {
 		this.birthDate = birthday;
 	}
 	public boolean isAdminRights() {
@@ -66,7 +66,7 @@ public class Individual extends User {
 		builder.append(", isFemale()=");
 		builder.append(isFemale());
 		builder.append(", getBirthday()=");
-		builder.append(getBirthday());
+		builder.append(getBirthDate());
 		builder.append(", isAdminRights()=");
 		builder.append(isAdminRights());
 		builder.append(", getUserId()=");
@@ -77,8 +77,8 @@ public class Individual extends User {
 		builder.append(getPassword());
 		builder.append(", getPhone()=");
 		builder.append(getPhone());
-		builder.append(", getAdress()=");
-		builder.append(getAdress());
+		builder.append(", getAddress()=");
+		builder.append(getAddress());
 		builder.append(", getZipcode()=");
 		builder.append(getZipcode());
 		builder.append(", getCity()=");

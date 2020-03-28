@@ -16,7 +16,7 @@
             <td><label>Mot de Passe : </label></td>
             <td>
                 <input type="password" class="form-control" id="password"
-                    formControlName="password" placeholder="aaaa" required/>
+                    formControlName="password" placeholder="********" required/>
             </td>
             <td *ngIf="!userForm.controls['password'].valid">{{getErrorMessage("password")}}</td>
         </tr>
@@ -45,28 +45,28 @@
             <td><label>Nom de l'Entreprise : </label></td>
             <td>
                 <input type="text" class="form-control" id="companyName"
-                    formControlName="companyName" placeholder="Nom Entreprise" required/>
+                    formControlName="companyName" placeholder="Nom Entreprise" />
             </td>
         </tr>
         <tr *ngIf="!isCompany()">
             <td><label>Prénom : </label></td>
             <td>
                 <input type="text" class="form-control" id="firstName"
-                    formControlName="firstName" placeholder="Prénom" required/>
+                    formControlName="firstName" placeholder="Prénom" />
             </td>
         </tr>
         <tr *ngIf="!isCompany()">
             <td><label>Nom : </label></td>
             <td>
                 <input type="text" class="form-control" id="lastName"
-                    formControlName="lastName" placeholder="Nom" required/>
+                    formControlName="lastName" placeholder="Nom" />
             </td>
         </tr>
         <tr>
             <td><label>Telephone : </label></td>
             <td>
                 <input type="text" class="form-control" id="telephone"
-                    formControlName="telephone" placeholder="0600000000" required/>
+                    formControlName="telephone" placeholder="0600000000" />
             </td>
         </tr>
         <tr>
@@ -74,7 +74,7 @@
             <td>
                 <div formGroupName="addressForm">
                     <input type="text" class="form-control" id="address"
-                        formControlName="address" placeholder="6, Rue Rougemont" required/>
+                        formControlName="address" placeholder="6, Rue Rougemont" />
                 </div>
             </td>
         </tr>
@@ -83,7 +83,7 @@
             <td>
                 <div formGroupName="addressForm">
                     <input type="text" class="form-control" id="zipCode"
-                        formControlName="zipCode" placeholder="00000" required/>
+                        formControlName="zipCode" placeholder="00000" />
                 </div>
             </td>
         </tr>
@@ -92,7 +92,7 @@
             <td>
                 <div formGroupName="addressForm">
                     <input type="text" class="form-control" id="city"
-                        formControlName="city" placeholder="Plessis-Robinson" required/>
+                        formControlName="city" placeholder="Plessis-Robinson" />
                 </div>
             </td>
         </tr>
