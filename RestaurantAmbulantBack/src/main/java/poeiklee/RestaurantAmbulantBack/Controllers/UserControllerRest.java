@@ -112,13 +112,23 @@ public class UserControllerRest {
     }
     
 
+    @PostMapping("/addUser")
+    public ResponseEntity<Object> addUser(/*@Valid*/ @RequestBody User reqUser)
+    {
+    	System.out.println(">>> Create new User: " + reqUser);
+    	if (reqUser.getEmail().isEmpty())
+			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
+    	userRepo.save(reqUser);
+		return new ResponseEntity<>("Added successfully",HttpStatus.OK);
+    }
+    
 	@PostMapping("/addIndividual")
 	public ResponseEntity<Object> addIndividual(@Valid @RequestBody Individual reqIndividual ) {
 
 		if(reqIndividual.getEmail().isEmpty() )
-			return  new ResponseEntity<>("Email Obligaory", HttpStatus.BAD_REQUEST);
+			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
 		if( individualRepo.findById(reqIndividual.getUserId()).isPresent() )
-			return  new ResponseEntity<>("Id alredy exist", HttpStatus.BAD_REQUEST);
+			return  new ResponseEntity<>("Id already exist", HttpStatus.BAD_REQUEST);
 
 		individualRepo.save(reqIndividual);
 		return new ResponseEntity<>("added successfully",HttpStatus.OK);
