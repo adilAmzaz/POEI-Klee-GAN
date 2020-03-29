@@ -1,10 +1,19 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class User {
@@ -19,7 +28,15 @@ public class User {
 	private String address;
 	private String zipcode;
 	private String city;
-	
+	@JsonBackReference
+	@Basic(fetch=FetchType.LAZY)
+	@OneToMany(
+		    mappedBy = "user",
+		    cascade = CascadeType.ALL,
+		    orphanRemoval = true,
+		    fetch = FetchType.LAZY
+		)
+	private List<Command> commands = new ArrayList<Command>();
 	
 	
 	public User(String email, String password, String phone, String adress, String zipcode, String city) {
@@ -45,6 +62,17 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
 	public String getPassword() {
 		return password;
 	}
@@ -57,12 +85,8 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String adress) {
-		this.address = adress;
-	}
+
+
 	public String getZipcode() {
 		return zipcode;
 	}
@@ -75,6 +99,16 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	
+	public List<Command> getCommands() {
+		return commands;
+	}
+
+	public void setCommands(List<Command> commands) {
+		this.commands = commands;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

@@ -1,6 +1,7 @@
 package poeiklee.RestaurantAmbulantBack.Controllers;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,11 +21,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import poeiklee.RestaurantAmbulantBack.Models.Command;
+import poeiklee.RestaurantAmbulantBack.Models.CommandLine;
 import poeiklee.RestaurantAmbulantBack.Models.Company;
 import poeiklee.RestaurantAmbulantBack.Models.Individual;
+import poeiklee.RestaurantAmbulantBack.Models.Product;
 import poeiklee.RestaurantAmbulantBack.Models.User;
+import poeiklee.RestaurantAmbulantBack.Repositories.CommandLineRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.CommandRepository;
 import poeiklee.RestaurantAmbulantBack.Repositories.CompanyRepository;
 import poeiklee.RestaurantAmbulantBack.Repositories.IndividualRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.ProductRepository;
 import poeiklee.RestaurantAmbulantBack.Repositories.UserRepository;
 
 @RestController
@@ -40,6 +47,15 @@ public class UserControllerRest {
 	@Autowired
 	UserRepository userRepo;
 	
+	@Autowired
+	CommandRepository commandRepo;
+	
+	@Autowired
+	CommandLineRepository clr;
+	@Autowired
+	ProductRepository productRep;
+	
+	
 	@RequestMapping("/remplir")
 	public String hello(Model model)
 	{
@@ -53,6 +69,39 @@ public class UserControllerRest {
 		Individual i4 = new Individual("email4", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 
+
+		Command c1 = new Command(1, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c6 = new Command(3, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c7 = new Command(4, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c5 = new Command(5, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		c1.setUser(i3);
+		c6.setUser(c3);
+		c7.setUser(c3);
+		c5.setUser(c3);
+		Product p1 = new Product(1, "label", "imageRelp", "comp", 12.0, 10);
+		Product p2 = new Product(2, "label", "imageRelp", "comp", 12.0, 10);
+		Product p3 = new Product(3, "label", "imageRelp", "comp", 12.0, 10);
+
+		CommandLine cl = new CommandLine();
+		cl.setCommand(c1);
+		cl.setCommandLineId(1);
+		cl.setEffectivePrice(10.2);
+		cl.setProduct(p1);
+		cl.setQuantity(2);
+		
+		CommandLine cl2 = new CommandLine();
+		cl2.setCommand(c1);
+		cl2.setCommandLineId(2);
+		cl2.setEffectivePrice(10.2);
+		cl2.setProduct(p1);
+		cl2.setQuantity(2);		
+		
+	
+		productRep.save(p1);
+		productRep.save(p2);
+		productRep.save(p3);
+		individualRepo.save(i3);
+
 		companyRepo.save(c2);
 		companyRepo.save(c);
 		companyRepo.save(c3);
@@ -63,8 +112,13 @@ public class UserControllerRest {
 		individualRepo.save(i3);
 		individualRepo.save(i4);
 		individualRepo.save(i5);
-
-
+		commandRepo.save(c1);
+		commandRepo.save(c6);
+		commandRepo.save(c7);
+		commandRepo.save(c5);
+		
+		clr.save(cl);
+		clr.save(cl2);
 		return "Done";
 	}
 
