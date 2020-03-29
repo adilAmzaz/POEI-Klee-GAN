@@ -29,5 +29,5 @@
 }
 ::ng-deep .carousel-item.active .carousel-caption:hover {
   transform: scale(1.1,1.1);
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
