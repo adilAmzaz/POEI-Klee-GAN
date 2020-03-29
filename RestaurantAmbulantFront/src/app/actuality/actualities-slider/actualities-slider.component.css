@@ -1,0 +1,33 @@
+::ng-deep .carousel-item {
+  display: block !important;
+  position: absolute;
+  transition: all 1s;
+}
+::ng-deep .carousel-item.active {
+  position: relative;
+  top: 0;
+}
+::ng-deep .carousel-item .picsum-img-wrapper {
+  opacity: 0;
+  transform: scale(1.1,1.1);
+  transition: all 1s;
+}
+::ng-deep .carousel-item.active .picsum-img-wrapper {
+  opacity: 1;
+  transform: scale(1,1);
+  transition: all 1s;
+}
+::ng-deep .carousel-item .carousel-caption {
+  text-shadow: 0 2px 8px black;
+  opacity: 0;
+  transform: scale(0.5,0.5);
+  transition: all 1s;
+}
+::ng-deep .carousel-item.active .carousel-caption {
+  opacity: 1;
+  transform: scale(1,1);
+}
+::ng-deep .carousel-item.active .carousel-caption:hover {
+  transform: scale(1.1,1.1);
+  transition: all 0.5s;
+}
