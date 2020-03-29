@@ -12,6 +12,11 @@ public class Individual extends User {
 	private boolean female;
 	private LocalDate birthDate;
 	private boolean adminRights;
+	
+	public Individual()
+	{
+		
+	}
 	public Individual(int userId, String email, String password, String phone, String adress, String zipcode,
 			String city, String lastName, String firstName, boolean female, LocalDate birthday,boolean adminRights) {
 		super(userId, email, password, phone, adress, zipcode, city);

@@ -9,4 +9,6 @@ import poeiklee.RestaurantAmbulantBack.Models.Company;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
+	Company findByEmail(String email);
+
 }

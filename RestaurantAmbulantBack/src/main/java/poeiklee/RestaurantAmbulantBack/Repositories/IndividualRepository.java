@@ -9,4 +9,6 @@ import poeiklee.RestaurantAmbulantBack.Models.Individual;
 @Repository
 public interface IndividualRepository extends JpaRepository<Individual, Integer> {
 
+	Individual findByEmail(String email);
+
 }
