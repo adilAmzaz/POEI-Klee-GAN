@@ -46,8 +46,8 @@ export class ActualitiesListComponent implements OnInit {
   scrollToTop() {
     (function smoothscroll() {
       let currentScroll = window.pageYOffset
-      if (currentScroll > 100) {
-        window.scrollTo(0, Math.max(100, currentScroll - 50))
+      if (currentScroll > 0) {
+        window.scrollTo(0, Math.max(0, currentScroll - 50))
         window.requestAnimationFrame(smoothscroll)
       }
     }) ()

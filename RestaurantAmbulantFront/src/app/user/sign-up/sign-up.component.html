@@ -1,133 +1,134 @@
+<div class="mx-auto" style="max-width: 800px; margin-top: 80px;">
+    <form [formGroup]="userForm" (ngSubmit)="signIn()">
+        <table>
+            <tr>
+                <td colspan="2"><h4>Identifiants : </h4></td>
+            </tr>
+            <tr>
+                <td><label>Adresse E-Mail : </label></td>
+                <td>
+                    <input type="email" class="form-control" id="email"
+                        formControlName="email" placeholder="john.doe@random.rng" required/>
+                </td>
+                <td *ngIf="!userForm.controls['email'].valid">{{getErrorMessage("email")}}</td>
+            </tr>
+            <tr>
+                <td><label>Mot de Passe : </label></td>
+                <td>
+                    <input type="password" class="form-control" id="password"
+                        formControlName="password" placeholder="********" required/>
+                </td>
+                <td *ngIf="!userForm.controls['password'].valid">{{getErrorMessage("password")}}</td>
+            </tr>
+            <tr><br/></tr>
+            <tr>
+                <td colspan="2"><h4>Informations : </h4></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="text-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="individual" [value]="false"
+                                formControlName="isCompany" name="isCompany" checked>
+                            <label class="form-check-label" for="individual">Personne</label>
+                        </div>
 
-<form [formGroup]="userForm" (ngSubmit)="signIn()">
-    <table>
-        <tr>
-            <td colspan="2"><h4>Identifiants : </h4></td>
-        </tr>
-        <tr>
-            <td><label>Adresse E-Mail : </label></td>
-            <td>
-                <input type="email" class="form-control" id="email"
-                    formControlName="email" placeholder="john.doe@random.rng" required/>
-            </td>
-            <td *ngIf="!userForm.controls['email'].valid">{{getErrorMessage("email")}}</td>
-        </tr>
-        <tr>
-            <td><label>Mot de Passe : </label></td>
-            <td>
-                <input type="password" class="form-control" id="password"
-                    formControlName="password" placeholder="********" required/>
-            </td>
-            <td *ngIf="!userForm.controls['password'].valid">{{getErrorMessage("password")}}</td>
-        </tr>
-        <tr><br/></tr>
-        <tr>
-            <td colspan="2"><h4>Informations : </h4></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <div class="text-center">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="form-check-input" id="individual" [value]="false"
-                            formControlName="isCompany" name="isCompany" checked>
-                        <label class="form-check-label" for="individual">Personne</label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="company" [value]="true"
+                                formControlName="isCompany" name="isCompany">
+                            <label class="form-check-label" for="company">Entreprise</label>
+                        </div>
                     </div>
+                </td>
+            </tr>
+            <tr *ngIf="isCompany()">
+                <td><label>Nom de l'Entreprise : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="companyName"
+                        formControlName="companyName" placeholder="Nom Entreprise" />
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Prénom : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="firstName"
+                        formControlName="firstName" placeholder="Prénom" />
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Nom : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="lastName"
+                        formControlName="lastName" placeholder="Nom" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Telephone : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="telephone"
+                        formControlName="telephone" placeholder="0600000000" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Adresse : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="address"
+                            formControlName="address" placeholder="6, Rue Rougemont" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Code Postal : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="zipCode"
+                            formControlName="zipCode" placeholder="00000" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Ville : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="city"
+                            formControlName="city" placeholder="Plessis-Robinson" />
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Date de Naissance : </label></td>
+                <td>
+                    <input type="date" class="form-control" id="birthDate"
+                        formControlName="birthDate" required/>
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td colspan="2">
+                    <div class="text-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="female" [value]="true"
+                                formControlName="isFemale" name="isFemale" checked>
+                            <label class="form-check-label" for="female">Femme</label>
+                        </div>
 
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="form-check-input" id="company" [value]="true"
-                            formControlName="isCompany" name="isCompany">
-                        <label class="form-check-label" for="company">Entreprise</label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="male" [value]="false"
+                                formControlName="isFemale" name="isFemale">
+                            <label class="form-check-label" for="male">Homme</label>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-        <tr *ngIf="isCompany()">
-            <td><label>Nom de l'Entreprise : </label></td>
-            <td>
-                <input type="text" class="form-control" id="companyName"
-                    formControlName="companyName" placeholder="Nom Entreprise" />
-            </td>
-        </tr>
-        <tr *ngIf="!isCompany()">
-            <td><label>Prénom : </label></td>
-            <td>
-                <input type="text" class="form-control" id="firstName"
-                    formControlName="firstName" placeholder="Prénom" />
-            </td>
-        </tr>
-        <tr *ngIf="!isCompany()">
-            <td><label>Nom : </label></td>
-            <td>
-                <input type="text" class="form-control" id="lastName"
-                    formControlName="lastName" placeholder="Nom" />
-            </td>
-        </tr>
-        <tr>
-            <td><label>Telephone : </label></td>
-            <td>
-                <input type="text" class="form-control" id="telephone"
-                    formControlName="telephone" placeholder="0600000000" />
-            </td>
-        </tr>
-        <tr>
-            <td><label>Adresse : </label></td>
-            <td>
-                <div formGroupName="addressForm">
-                    <input type="text" class="form-control" id="address"
-                        formControlName="address" placeholder="6, Rue Rougemont" />
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Code Postal : </label></td>
-            <td>
-                <div formGroupName="addressForm">
-                    <input type="text" class="form-control" id="zipCode"
-                        formControlName="zipCode" placeholder="00000" />
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><label>Ville : </label></td>
-            <td>
-                <div formGroupName="addressForm">
-                    <input type="text" class="form-control" id="city"
-                        formControlName="city" placeholder="Plessis-Robinson" />
-                </div>
-            </td>
-        </tr>
-        <tr *ngIf="!isCompany()">
-            <td><label>Date de Naissance : </label></td>
-            <td>
-                <input type="date" class="form-control" id="birthDate"
-                    formControlName="birthDate" required/>
-            </td>
-        </tr>
-        <tr *ngIf="!isCompany()">
-            <td colspan="2">
-                <div class="text-center">
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="form-check-input" id="female" [value]="true"
-                            formControlName="isFemale" name="isFemale" checked>
-                        <label class="form-check-label" for="female">Femme</label>
+                </td>
+            </tr>
+            <tr><br/></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">S'inscrire</button>
                     </div>
-
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="form-check-input" id="male" [value]="false"
-                            formControlName="isFemale" name="isFemale">
-                        <label class="form-check-label" for="male">Homme</label>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr><br/></tr>
-        <tr>
-            <td></td>
-            <td>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">S'inscrire</button>
-                </div>
-            </td>
-        </tr>
-    </table>
-</form>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
