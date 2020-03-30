@@ -1,24 +1,31 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
 public class Meal {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	private int mealId;
 	private String name;
 	private LocalTime beginHour;
 	private LocalTime endHour;
-	@ManyToMany
-	private List<Product> products;
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<Product> products = new ArrayList<Product>();
 	public Meal()
 	{
 		
+	}
+
+	public Meal(String name, LocalTime beginHour, LocalTime endHour) {
+		this.name = name;
+		this.beginHour = beginHour;
+		this.endHour = endHour;
 	}
 
 	public int getMealId() {
@@ -35,6 +42,24 @@ public class Meal {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+		for (Product product : products)
+			product.addMealNoLoop(this);
+	}
+	
+	public void addProduct(Product product) {
+		this.products.add(product);
+		product.addMealNoLoop(this);
+	}
+	public void addProductNoLoop(Product product) {
+		this.products.add(product);
+	}
+	
+	public void removeProduct(Product product) {
+		this.products.remove(product);
+		product.removeMealNoLoop(this);
+	}
+	public void removeProductNoLoop(Product product) {
+		this.products.remove(product);
 	}
 
 	public String getName() {
