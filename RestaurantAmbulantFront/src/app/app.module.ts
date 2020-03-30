@@ -23,6 +23,7 @@ import { ActualitiesManagementComponent } from './actuality/actualities-manageme
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
 import { OrderHistoryComponent } from './history/order-history/order-history.component';
 import { FormsModule } from '@angular/forms';
+import { ProductsListComponent } from './product/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,8 @@ import { FormsModule } from '@angular/forms';
     ActualityEditComponent,
     ActualitiesManagementComponent,
     ActualitiesSliderComponent,
-    OrderHistoryComponent
-    //OrderHistoryHttpServiceService
+    OrderHistoryComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,16 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Product {
-	@javax.persistence.Id
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
 	private int Id;
 	private String label;
 	private String imageRelativePath;
@@ -25,25 +24,54 @@ public class Product {
 		    orphanRemoval = true
 		)
 	List<CommandLine> commandLine;
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	List<Meal> meals;
-	@ManyToMany
-	@Enumerated(EnumType.STRING)
-	List<DayProduct> days;
+	@ElementCollection
+	List<DayOfWeek> days;
 	public Product()
 	{
 
 	}
 
 
-	public Product(int id, String label, String imageRelativePath, String composition, double price, int stock) {
-		super();
-		Id = id;
+	public Product(String label, String imageRelativePath, String composition, double price, int stock) {
 		this.label = label;
 		this.imageRelativePath = imageRelativePath;
 		this.composition = composition;
 		this.price = price;
 		this.stock = stock;
+		meals = new ArrayList<Meal>();
+		days = new ArrayList<DayOfWeek>();
+	}
+	public Product(String label, String imageRelativePath, String composition, double price, int stock, ArrayList<Meal> meals, ArrayList<DayOfWeek> days) {
+		this.label = label;
+		this.imageRelativePath = imageRelativePath;
+		this.composition = composition;
+		this.price = price;
+		this.stock = stock;
+		setMeals(meals);
+		this.days = days;
+	}
+	public Product(String label, String imageRelativePath, String composition, double price, int stock, int count, ArrayList<Meal> meals, ArrayList<DayOfWeek> days) {
+		this.label = label;
+		this.imageRelativePath = imageRelativePath;
+		this.composition = composition;
+		this.price = price;
+		this.stock = stock;
+		this.count = count;
+		setMeals(meals);
+		this.days = days;
+	}
+	public Product(String label, String imageRelativePath, String composition, double price, int stock, int count, ArrayList<Meal> meals, DayOfWeek day) {
+		this.label = label;
+		this.imageRelativePath = imageRelativePath;
+		this.composition = composition;
+		this.price = price;
+		this.stock = stock;
+		this.count = count;
+		setMeals(meals);
+		days = new ArrayList<DayOfWeek>();
+		days.add(day);
 	}
 	public List<CommandLine> getCommandLine() {
 		return commandLine;
@@ -62,7 +90,26 @@ public class Product {
 
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
+		for (Meal meal : meals)
+			meal.addProductNoLoop(this);
 	}
+	
+	public void addMeal(Meal meal) {
+		this.meals.add(meal);
+		meal.addProductNoLoop(this);
+	}
+	public void addMealNoLoop(Meal meal) {
+		this.meals.add(meal);
+	}
+	
+	public void removeMeal(Meal meal) {
+		this.meals.remove(meal);
+		meal.removeProductNoLoop(this);
+	}
+	public void removeMealNoLoop(Meal meal) {
+		this.meals.remove(meal);
+	}
+
 
 
 	private void incrementCount()
@@ -137,6 +184,25 @@ public class Product {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+
+	public List<DayOfWeek> getDays() {
+		return days;
+	}
+
+
+	public void setDays(List<DayOfWeek> days) {
+		this.days = days;
+	}
+
+
+	public void addDay(DayOfWeek day) {
+		this.days.add(day);
+	}
+	
+	public void removeDay(DayOfWeek day) {
+		this.days.remove(day);
 	}
 
 

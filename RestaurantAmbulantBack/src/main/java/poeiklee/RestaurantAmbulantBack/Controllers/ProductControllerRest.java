@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import poeiklee.RestaurantAmbulantBack.Models.Product;
 import poeiklee.RestaurantAmbulantBack.Repositories.ProductRepository;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductControllerRest {
 
 	@Autowired
@@ -29,11 +31,11 @@ public class ProductControllerRest {
 	@RequestMapping("/remplirproduct")
 	public String hello()
 	{
-		Product p1 = new Product(1, "label", "imageRelativePath", "Composition", 10.0, 40);
-		Product p2 = new Product(2, "label2", "imageRelativePath", "Composition", 10.0, 40);
-		Product p3 = new Product(3, "label3", "imageRelativePath", "Composition", 10.0, 40);
-		Product p4 = new Product(4, "label4", "imageRelativePath", "Composition", 10.0, 40);
-		Product p5 = new Product(5, "label5", "imageRelativePath", "Composition", 10.0, 40);
+		Product p1 = new Product("label", "imageRelativePath", "Composition", 10.0, 40);
+		Product p2 = new Product("label2", "imageRelativePath", "Composition", 10.0, 40);
+		Product p3 = new Product("label3", "imageRelativePath", "Composition", 10.0, 40);
+		Product p4 = new Product("label4", "imageRelativePath", "Composition", 10.0, 40);
+		Product p5 = new Product("label5", "imageRelativePath", "Composition", 10.0, 40);
 		productRepo.save(p1);
 		productRepo.save(p2);
 		productRepo.save(p3);
@@ -42,7 +44,7 @@ public class ProductControllerRest {
 
 		return "done";
 	}
-	@GetMapping("/getproducts")
+	@GetMapping("/products/all")
 	public List<Product> getProducts()
 	{
 		List<Product> products = productRepo.findAll();

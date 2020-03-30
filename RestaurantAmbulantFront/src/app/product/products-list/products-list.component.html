@@ -1,0 +1,4 @@
+<div style="padding-top: 70px;">
+    <li *ngFor="let product of products">{{product.label}} (<span *ngFor="let meal of product.meals">{{meal.name}}, </span>)
+        (<span *ngFor="let day of product.days">{{days[day]}}, </span>)</li>
+</div>

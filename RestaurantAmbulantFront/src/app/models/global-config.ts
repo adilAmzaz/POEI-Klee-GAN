@@ -7,4 +7,5 @@ export class GlobalConfig {
     public static getCommandByIdEndPoint : string = `${GlobalConfig.serverUrl}getcommandbyid/`
     public static getCommandByEmailEndPoint : string = `${GlobalConfig.serverUrl}getcommandbyemail/`
 
+    public static productEndPoint : string = `${GlobalConfig.serverUrl}products/`
 }
