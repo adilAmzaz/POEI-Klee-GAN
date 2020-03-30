@@ -3,4 +3,5 @@ export class GlobalConfig {
     public static userEndPoint : string = `${GlobalConfig.serverUrl}user/`
     public static getUsersEndPoint: string = `${GlobalConfig.serverUrl}getusers/`
     public static actualityEndPoint : string = `${GlobalConfig.serverUrl}actuality/`
+    public static productEndPoint : string = `${GlobalConfig.serverUrl}products/`
 }

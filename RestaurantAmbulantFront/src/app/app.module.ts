@@ -21,6 +21,7 @@ import { ActualityComponent } from './actuality/actuality/actuality.component';
 import { ActualityEditComponent } from './actuality/actuality-edit/actuality-edit.component';
 import { ActualitiesManagementComponent } from './actuality/actualities-management/actualities-management.component';
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
+import { ProductsListComponent } from './product/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ActualitiesSliderComponent } from './actuality/actualities-slider/actua
     ActualityComponent,
     ActualityEditComponent,
     ActualitiesManagementComponent,
-    ActualitiesSliderComponent
+    ActualitiesSliderComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
