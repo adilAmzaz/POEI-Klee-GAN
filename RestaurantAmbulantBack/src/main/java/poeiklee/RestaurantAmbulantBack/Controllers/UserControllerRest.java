@@ -78,9 +78,9 @@ public class UserControllerRest {
 		c6.setUser(c3);
 		c7.setUser(c3);
 		c5.setUser(c3);
-		Product p1 = new Product(1, "label", "imageRelp", "comp", 12.0, 10);
-		Product p2 = new Product(2, "label", "imageRelp", "comp", 12.0, 10);
-		Product p3 = new Product(3, "label", "imageRelp", "comp", 12.0, 10);
+		Product p1 = new Product("label", "imageRelp", "comp", 12.0, 10);
+		Product p2 = new Product("label", "imageRelp", "comp", 12.0, 10);
+		Product p3 = new Product("label", "imageRelp", "comp", 12.0, 10);
 
 		CommandLine cl = new CommandLine();
 		cl.setCommand(c1);

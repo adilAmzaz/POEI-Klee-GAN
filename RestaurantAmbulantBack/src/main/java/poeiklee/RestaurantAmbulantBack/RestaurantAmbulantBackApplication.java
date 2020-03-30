@@ -1,7 +1,11 @@
 package poeiklee.RestaurantAmbulantBack;
 
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,13 +13,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import poeiklee.RestaurantAmbulantBack.Models.Actuality;
+import poeiklee.RestaurantAmbulantBack.Models.Meal;
+import poeiklee.RestaurantAmbulantBack.Models.Product;
 import poeiklee.RestaurantAmbulantBack.Repositories.ActualityRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.MealRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.ProductRepository;
 
 @SpringBootApplication
 public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 
 	@Autowired
 	ActualityRepository actualityRepository;
+	
+	@Autowired
+	MealRepository mealRepository;
+	
+	@Autowired
+	ProductRepository productRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RestaurantAmbulantBackApplication.class, args);
@@ -24,6 +38,58 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		ArrayList<DayOfWeek> weekDays = new ArrayList<DayOfWeek>(Arrays.asList(
+				DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY));
+		ArrayList<DayOfWeek> weekendDays = new ArrayList<DayOfWeek>(Arrays.asList(
+				DayOfWeek.SATURDAY, DayOfWeek.SUNDAY));
+		ArrayList<DayOfWeek> allDays = new ArrayList<DayOfWeek>(Arrays.asList(
+				DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY));
+		
+		Meal breakfast = new Meal("Petit-déjeuner", LocalTime.of(7, 30), LocalTime.of(10, 0));
+		Meal lunch = new Meal("Déjeuner", LocalTime.of(11, 30), LocalTime.of(14, 0));
+		Meal teatime = new Meal("Goûter", LocalTime.of(15, 30), LocalTime.of(17, 0));
+		Meal dinner = new Meal("Dîner", LocalTime.of(18, 30), LocalTime.of(22, 0));
+		
+		ArrayList<Meal> strongMeals = new ArrayList<Meal>(Arrays.asList(lunch, dinner));
+		ArrayList<Meal> lightMeals = new ArrayList<Meal>(Arrays.asList(breakfast, teatime));
+		ArrayList<Meal> allMeals = new ArrayList<Meal>(Arrays.asList(breakfast, lunch, teatime, dinner));
+		
+		mealRepository.save(breakfast);
+		mealRepository.save(lunch);
+		mealRepository.save(teatime);
+		mealRepository.save(dinner);
+		
+		productRepository.save(new Product("Rôti de bœuf au feu de bois", "images/products/roti.jpg", 
+				"Viande de bœuf et condiments", 12.0, 10, 115, strongMeals, allDays));
+		productRepository.save(new Product("Pain au chocolat", "images/products/chocolatine.jpg", 
+				"Pâte feuilletée et chocolat", 1.1, 25, 1023, lightMeals, allDays));
+		productRepository.save(new Product("Pommes de terre frites", "images/products/frites.jpg", 
+				"Pommes de terre et condiments", 3.5, 33, 841, strongMeals, allDays));
+		productRepository.save(new Product("Chocolat chaud", "images/products/chocolat.jpg", 
+				"Lait, chocolat et sucre", 2.0, 18, 910, lightMeals, allDays));
+		productRepository.save(new Product("Spaghetti à la carbonara", "images/products/carbonara.jpg", 
+				"Pâtes, lardons, crême et parmesan", 10.5, 12, 511, strongMeals, allDays));
+		productRepository.save(new Product("Soupe à la tomate", "images/products/soupe.jpg", 
+				"Tomate, pomme de terre, oignon et condiments", 4.6, 18, 652, strongMeals, weekDays));
+		productRepository.save(new Product("Brochettes d'agneau braisé", "images/products/brochettes.jpg", 
+				"Viande d'agneau, oignon, courgette, poivron et condiments", 15.0, 4, 59, strongMeals, weekendDays));
+		productRepository.save(new Product("Jus d'orange frais", "images/products/jus.jpg", 
+				"Pâte feuilletée et chocolat", 1.8, 43, 1637, allMeals, allDays));
+		productRepository.save(new Product("Salade de fruits", "images/products/saladefruits.jpg", 
+				"Fruits de saison", 5.0, 22, 711, allMeals, allDays));
+		productRepository.save(new Product("Poulet frit", "images/products/poulet.jpg", 
+				"Viande de poulet et panure", 8.0, 19, 813, strongMeals, weekDays));
+		productRepository.save(new Product("Gratin de chou-fleur", "images/products/gratin.jpg", 
+				"Chou-fleur, sauce béchamel et emmental", 8.5, 14, 546, strongMeals, weekDays));
+		productRepository.save(new Product("Boudin aux pommes", "images/products/boudin.jpg", 
+				"Boudin noir et pommes caramélisées", 14.8, 3, 48, strongMeals, DayOfWeek.SUNDAY));
+		productRepository.save(new Product("Croissant au beurre", "images/products/croissant.jpg", 
+				"Pâte feuilletée et beurre", 0.9, 34, 1181, lightMeals, allDays));
+		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/products/british.jpg", 
+				"Toasts, œufs sur le plat, bacon, saucisses, tomates, galette de pommes de terre et champignons", 1.1, 25, 1023, strongMeals, weekendDays));
+		productRepository.save(new Product("Salade césar", "images/products/salade.jpg", 
+				"Salade verte, poulet grillé, croûtons et assaisonnement", 9.9, 15, 592, strongMeals, allDays));
+		
 		Actuality actuality1 = new Actuality("Hello world", 
 				"L'équipe", 
 				"Un nouveau système d'actualité voit le jour : vous connaîtrez toutes les dernières nouvelles de votre Restautant Ambulant !", 

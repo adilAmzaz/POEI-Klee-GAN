@@ -22,6 +22,7 @@ import { ActualityEditComponent } from './actuality/actuality-edit/actuality-edi
 import { ActualitiesManagementComponent } from './actuality/actualities-management/actualities-management.component';
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ProductsListComponent } from './product/products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     ActualityEditComponent,
     ActualitiesManagementComponent,
     ActualitiesSliderComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
