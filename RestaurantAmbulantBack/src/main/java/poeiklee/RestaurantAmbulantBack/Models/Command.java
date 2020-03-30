@@ -1,6 +1,7 @@
 package poeiklee.RestaurantAmbulantBack.Models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Command {
@@ -27,12 +30,14 @@ public class Command {
 	private String address;
 	private String zipecode;
 	private String city;
+	@JsonBackReference
+	@Basic(fetch=FetchType.LAZY)
 	@OneToMany(
 		    mappedBy = "command",
 		    cascade = CascadeType.ALL,
 		    orphanRemoval = true
 		)
-	List<CommandLine> commandLine;
+	List<CommandLine> commandLine = new ArrayList<CommandLine>();
 	
 
 	

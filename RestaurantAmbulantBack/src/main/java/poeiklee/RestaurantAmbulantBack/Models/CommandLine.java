@@ -13,6 +13,7 @@ public class CommandLine {
 	@Id
 	private int commandLineId;
 	@Basic(fetch=FetchType.LAZY)
+	@JsonBackReference
 	@ManyToOne
 	private Product product;
 	@JsonBackReference

@@ -59,66 +59,7 @@ public class UserControllerRest {
 	@RequestMapping("/remplir")
 	public String hello(Model model)
 	{
-		Company c = new Company("company", "123", "phone", "addess", "zipecode", "city", "name");
-		Company c2 = new Company("company2", "123", "phone", "addess", "zipecode", "city", "name");
-		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");
-		Company c4 = new Company("company4", "123", "phone", "addess", "zipecode", "city", "name");
 
-		Individual i1 = new Individual("email1", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i3 = new Individual("email3", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i4 = new Individual("email4", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-
-
-		Command c1 = new Command(1, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
-		Command c6 = new Command(3, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
-		Command c7 = new Command(4, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
-		Command c5 = new Command(5, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
-		c1.setUser(i3);
-		c6.setUser(c3);
-		c7.setUser(c3);
-		c5.setUser(c3);
-		Product p1 = new Product(1, "label", "imageRelp", "comp", 12.0, 10);
-		Product p2 = new Product(2, "label", "imageRelp", "comp", 12.0, 10);
-		Product p3 = new Product(3, "label", "imageRelp", "comp", 12.0, 10);
-
-		CommandLine cl = new CommandLine();
-		cl.setCommand(c1);
-		cl.setCommandLineId(1);
-		cl.setEffectivePrice(10.2);
-		cl.setProduct(p1);
-		cl.setQuantity(2);
-		
-		CommandLine cl2 = new CommandLine();
-		cl2.setCommand(c1);
-		cl2.setCommandLineId(2);
-		cl2.setEffectivePrice(10.2);
-		cl2.setProduct(p1);
-		cl2.setQuantity(2);		
-		
-	
-		productRep.save(p1);
-		productRep.save(p2);
-		productRep.save(p3);
-		individualRepo.save(i3);
-
-		companyRepo.save(c2);
-		companyRepo.save(c);
-		companyRepo.save(c3);
-		companyRepo.save(c4);
-		
-		//individualRepo.save(i);
-		individualRepo.save(i1);
-		individualRepo.save(i3);
-		individualRepo.save(i4);
-		individualRepo.save(i5);
-		commandRepo.save(c1);
-		commandRepo.save(c6);
-		commandRepo.save(c7);
-		commandRepo.save(c5);
-		
-		clr.save(cl);
-		clr.save(cl2);
 		return "Done";
 	}
 

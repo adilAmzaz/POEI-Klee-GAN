@@ -21,6 +21,8 @@ import { ActualityComponent } from './actuality/actuality/actuality.component';
 import { ActualityEditComponent } from './actuality/actuality-edit/actuality-edit.component';
 import { ActualitiesManagementComponent } from './actuality/actualities-management/actualities-management.component';
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
+import { OrderHistoryComponent } from './history/order-history/order-history.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,14 +39,17 @@ import { ActualitiesSliderComponent } from './actuality/actualities-slider/actua
     ActualityComponent,
     ActualityEditComponent,
     ActualitiesManagementComponent,
-    ActualitiesSliderComponent
+    ActualitiesSliderComponent,
+    OrderHistoryComponent
+    //OrderHistoryHttpServiceService
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { ActualitiesListComponent } from './actuality/actualities-list/actualities-list.component';
 import { ActualityComponent } from './actuality/actuality/actuality.component';
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
+import { OrderHistoryComponent } from './history/order-history/order-history.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'sign-up', component : SignUpComponent},
   {path: 'actualities', component : ActualitiesListComponent},
   {path: 'actualities/actuality/:id', component : ActualityComponent},
+  {path: 'commands', component: OrderHistoryComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];

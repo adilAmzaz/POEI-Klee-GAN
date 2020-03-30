@@ -1,0 +1,106 @@
+
+<div class="container" style="padding-top: 70px;">
+    <h2>Bordered Table</h2>
+    <p>Liste de tous les commands </p>
+    <table class="table table-striped" *ngIf="listCommands.length > 0">
+      <thead>
+        <tr >
+          <th>CommandId</th>
+          <th>UserId</th>
+          <th>orderDate</th>
+          <th>deliveryDate</th>
+          <th>delivered</th>
+          <th>deliverdDate</th>
+          <th>homeDelivery</th>
+          <th>address</th>
+          <th>zipecode</th>
+          <th>city</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listCommands; let i = index; ">
+            <th>{{item.commandId}}</th>
+            <th>{{item.user.userId}}</th>
+            <th>{{item.orderDate}}</th>
+            <th>{{item.deliveryDate}}</th>
+            <th>{{item.delivered}}</th>
+            <th>{{item.deliverdDate}}</th>
+            <th>{{item.homeDelivery}}</th>
+            <th>{{item.address}}</th>
+            <th>{{item.zipecode}}</th>
+            <th>{{item.city}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>On recevoire un command en saisissant l'id et cliquer sur le bouton avec un div qui apparait seulement si la command reçu non nul</p>
+  id : {{idCommand}}
+  <input type="text" [(ngModel)]="idCommand"/>
+  <button type="submit" (click)="getCommandByUserId()">Submit</button>
+  <div *ngIf="!(command==null)">
+    <table class="table table-striped" >
+    <thead>
+        <tr >
+          <th>CommandId</th>
+          <th>UserId</th>
+          <th>orderDate</th>
+          <th>deliveryDate</th>
+          <th>delivered</th>
+          <th>deliverdDate</th>
+          <th>homeDelivery</th>
+          <th>address</th>
+          <th>zipecode</th>
+          <th>city</th>
+        </tr>
+      </thead>
+<tbody>
+  <tr>
+    <th>{{command.commandId}}</th>
+    <th>{{command.user.userId}}</th>
+    <th>{{command.orderDate}}</th>
+    <th>{{command.deliveryDate}}</th>
+    <th>{{command.delivered}}</th>
+    <th>{{command.deliverdDate}}</th>
+    <th>{{command.homeDelivery}}</th>
+    <th>{{command.address}}</th>
+    <th>{{command.zipecode}}</th>
+    <th>{{command.city}}</th>
+</tr>
+</tbody>
+</table>
+
+</div>
+<p>Liste de commands pour l'addres mail "company3" qui utilise le variable listCommandsByEmail dans ts et la methode
+    getCommandByEmail dans OrderHistoryHttpService et   getCommandByEmail() et OnInit dans OrderHistoryComponenet.ts
+</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>CommandId</th>
+        <th>UserId</th>
+        <th>orderDate</th>
+        <th>deliveryDate</th>
+        <th>delivered</th>
+        <th>deliverdDate</th>
+        <th>homeDelivery</th>
+        <th>address</th>
+        <th>zipecode</th>
+        <th>city</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of listCommandsByEmail">
+        <td>{{item.commandId}}</td>
+        <td>{{item.user.userId}}</td>
+        <td>{{item.orderDate}}</td>
+        <td>{{item.deliveryDate}}</td>
+        <td>{{item.delivered}}</td>
+        <td>{{item.deliverdDate}}</td>
+        <td>{{item.homeDelivery}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.zipecode}}</td>
+        <td>{{item.city}}</td>
+    </tr>
+    </tbody>
+  </table>
