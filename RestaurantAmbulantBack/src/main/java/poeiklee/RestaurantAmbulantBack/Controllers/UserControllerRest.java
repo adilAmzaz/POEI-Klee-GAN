@@ -164,6 +164,15 @@ public class UserControllerRest {
     	
     	return individualRepo.findByEmail(email);
     }
+    @GetMapping("/getuser-id/{id}")  
+    public User getUserByEmail(@PathVariable("id") int id)
+    {
+    	Optional<User> user = userRepo.findById(id);
+    	if (user.isPresent())
+    		return user.get();
+    	else
+    		return null;
+    }
     
 
     @PostMapping("/addUser")
@@ -190,7 +199,6 @@ public class UserControllerRest {
 
 	@PostMapping("/addCompany")
 	public ResponseEntity<Object> addCompany(@Valid @RequestBody Company reqCompany ) {
-
 		if(reqCompany.getEmail().isEmpty())
 			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
 

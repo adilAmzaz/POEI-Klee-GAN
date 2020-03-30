@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User, Company, Individual } from '../models/user';
 import { Observable } from 'rxjs';
 import { GlobalConfig } from '../models/global-config';
@@ -16,48 +16,30 @@ export class UserHttpService {
     return this._http.get<User[]>(GlobalConfig.getUsersEndPoint);
   }
 
-  addCompany(company: Company): any
+  getUserById(id: number): Observable<User>
   {
-    console.log(GlobalConfig.serverUrl + "addCompany");
-    return this._http.post(GlobalConfig.serverUrl + "addCompany", 
-      {
-        "email": company.email,
-        "password": company.password,
-        "phone": company.phone,
-        "address": company.address,
-        "zipcode": company.zipcode,
-        "city": company.city,
-        "name": company.name
-      },
-      this.httpOptions);
+    return this._http.get<User>(GlobalConfig.serverUrl+"getuser-id/"+id);
   }
-  addIndividual(user: Individual): any
+  getUserByEMail(email: string): Observable<User>
   {
-    console.log(GlobalConfig.serverUrl + "addIndividual");
-    return this._http.post(GlobalConfig.serverUrl + "addIndividual", 
-      {
-        "email": user.email,
-        "password": user.password,
-        "phone": user.phone,
-        "address": user.address,
-        "zipcode": user.zipcode,
-        "city": user.city,
-        "firstName": user.firstName,
-        "lastName": user.lastName,
-        "birthDate": user.birthDate.toString(),
-        "female": user.female,
-        "adminRights": user.adminRights
-      },
-      this.httpOptions);
+    return this._http.get<User>(GlobalConfig.serverUrl+"getuser/"+email);
   }
 
-  addUser(user: User): any
+  addCompany(company: Company)
+  {
+    console.log(GlobalConfig.serverUrl + "addCompany");
+    return this._http.post<Company>(GlobalConfig.serverUrl + "addCompany", company);
+  }
+  addIndividual(individual: Individual)
+  {
+    console.log(GlobalConfig.serverUrl + "addIndividual");
+    return this._http.post<Individual>(GlobalConfig.serverUrl + "addIndividual", individual);
+  }
+
+  addUser(user: User)
   {
     return this._http.post<User>(GlobalConfig.serverUrl + "addUser",
-      user, this.httpOptions);
+      user);
   }
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
 }

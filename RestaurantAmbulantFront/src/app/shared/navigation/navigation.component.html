@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand navbar-dark bg-primary fixed-top" style="height: 60px;">
-    <ul class="navbar-nav">
+<nav class="navbar navbar-expand navbar-dark bg-primary fixed-top container" style="height: 60px;">
+    <ul class="navbar-nav col-9" >
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/home']">Accueil</a>
         </li>
@@ -9,8 +9,22 @@
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/actualities']">Actualités</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/sign-up']">Inscription</a>
-        </li>
     </ul>
+    <div class="col-3 pull-right" >
+        <ul class="navbar-nav" >
+            <li *ngIf="!isConnected()" class="nav-item">
+                <a class="nav-link" [routerLink]="['/sign-up']">Inscription</a>
+            </li>
+            <li *ngIf="!isConnected()" class="nav-item">
+                <a class="nav-link" [routerLink]="['/log-in']">Connexion</a>
+            </li>
+            <li *ngIf="isConnected()" class="nav-item">
+                <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+            </li>
+            <li *ngIf="isConnected()" class="nav-item">
+                <button class="btn btn-danger" (click)="disconnect()">Deconnexion</button>
+            </li>
+        </ul>
+    </div>
+
 </nav>

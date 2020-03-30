@@ -111,24 +111,6 @@
                                 formControlName="isFemale" name="isFemale" checked>
                             <label class="form-check-label" for="female">Femme</label>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            <tr *ngIf="!isCompany()">
-                <td><label>Date de Naissance : </label></td>
-                <td>
-                    <input type="date" class="form-control" id="birthDate"
-                        formControlName="birthDate" required/>
-                </td>
-            </tr>
-            <tr *ngIf="!isCompany()">
-                <td colspan="2">
-                    <div class="text-center">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="form-check-input" id="female" [value]="true"
-                                formControlName="isFemale" name="isFemale" checked>
-                            <label class="form-check-label" for="female">Femme</label>
-                        </div>
 
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="form-check-input" id="male" [value]="false"
