@@ -1,6 +1,6 @@
 package poeiklee.RestaurantAmbulantBack;
 
-
+import java.time.LocalDate;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -13,17 +13,43 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import poeiklee.RestaurantAmbulantBack.Models.Actuality;
-import poeiklee.RestaurantAmbulantBack.Models.Meal;
+import poeiklee.RestaurantAmbulantBack.Models.Command;
+import poeiklee.RestaurantAmbulantBack.Models.CommandLine;
+import poeiklee.RestaurantAmbulantBack.Models.Company;
+import poeiklee.RestaurantAmbulantBack.Models.Individual;
 import poeiklee.RestaurantAmbulantBack.Models.Product;
 import poeiklee.RestaurantAmbulantBack.Repositories.ActualityRepository;
-import poeiklee.RestaurantAmbulantBack.Repositories.MealRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.CommandLineRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.CommandRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.CompanyRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.IndividualRepository;
 import poeiklee.RestaurantAmbulantBack.Repositories.ProductRepository;
+import poeiklee.RestaurantAmbulantBack.Repositories.UserRepository;
+import poeiklee.RestaurantAmbulantBack.Models.Meal;
+
+import poeiklee.RestaurantAmbulantBack.Repositories.MealRepository;
 
 @SpringBootApplication
 public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 
 	@Autowired
 	ActualityRepository actualityRepository;
+	@Autowired
+	CompanyRepository companyRepo;
+	
+	@Autowired
+	IndividualRepository individualRepo;
+	
+	@Autowired
+	UserRepository userRepo;
+	
+	@Autowired
+	CommandRepository commandRepo;
+	
+	@Autowired
+	CommandLineRepository clr;
+	@Autowired
+	ProductRepository productRep;
 	
 	@Autowired
 	MealRepository mealRepository;
@@ -59,35 +85,35 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		mealRepository.save(teatime);
 		mealRepository.save(dinner);
 		
-		productRepository.save(new Product("Rôti de bœuf au feu de bois", "images/products/roti.jpg", 
+		productRepository.save(new Product("Rôti de bœuf au feu de bois", "images/product/roti.jpg", 
 				"Viande de bœuf et condiments", 12.0, 10, 115, strongMeals, allDays));
-		productRepository.save(new Product("Pain au chocolat", "images/products/chocolatine.jpg", 
+		productRepository.save(new Product("Pain au chocolat", "images/product/chocolatine.jpg", 
 				"Pâte feuilletée et chocolat", 1.1, 25, 1023, lightMeals, allDays));
-		productRepository.save(new Product("Pommes de terre frites", "images/products/frites.jpg", 
+		productRepository.save(new Product("Pommes de terre frites", "images/product/frites.jpg", 
 				"Pommes de terre et condiments", 3.5, 33, 841, strongMeals, allDays));
-		productRepository.save(new Product("Chocolat chaud", "images/products/chocolat.jpg", 
+		productRepository.save(new Product("Chocolat chaud", "images/product/chocolat.jpg", 
 				"Lait, chocolat et sucre", 2.0, 18, 910, lightMeals, allDays));
-		productRepository.save(new Product("Spaghetti à la carbonara", "images/products/carbonara.jpg", 
+		productRepository.save(new Product("Spaghetti à la carbonara", "images/product/carbonara.jpg", 
 				"Pâtes, lardons, crême et parmesan", 10.5, 12, 511, strongMeals, allDays));
-		productRepository.save(new Product("Soupe à la tomate", "images/products/soupe.jpg", 
+		productRepository.save(new Product("Soupe à la tomate", "images/product/soupe.jpg", 
 				"Tomate, pomme de terre, oignon et condiments", 4.6, 18, 652, strongMeals, weekDays));
-		productRepository.save(new Product("Brochettes d'agneau braisé", "images/products/brochettes.jpg", 
+		productRepository.save(new Product("Brochettes d'agneau braisé", "images/product/brochettes.jpg", 
 				"Viande d'agneau, oignon, courgette, poivron et condiments", 15.0, 4, 59, strongMeals, weekendDays));
-		productRepository.save(new Product("Jus d'orange frais", "images/products/jus.jpg", 
+		productRepository.save(new Product("Jus d'orange frais", "images/product/jus.jpg", 
 				"Pâte feuilletée et chocolat", 1.8, 43, 1637, allMeals, allDays));
-		productRepository.save(new Product("Salade de fruits", "images/products/saladefruits.jpg", 
+		productRepository.save(new Product("Salade de fruits", "images/product/saladefruits.jpg", 
 				"Fruits de saison", 5.0, 22, 711, allMeals, allDays));
-		productRepository.save(new Product("Poulet frit", "images/products/poulet.jpg", 
+		productRepository.save(new Product("Poulet frit", "images/product/poulet.jpg", 
 				"Viande de poulet et panure", 8.0, 19, 813, strongMeals, weekDays));
-		productRepository.save(new Product("Gratin de chou-fleur", "images/products/gratin.jpg", 
+		productRepository.save(new Product("Gratin de chou-fleur", "images/product/gratin.jpg", 
 				"Chou-fleur, sauce béchamel et emmental", 8.5, 14, 546, strongMeals, weekDays));
-		productRepository.save(new Product("Boudin aux pommes", "images/products/boudin.jpg", 
+		productRepository.save(new Product("Boudin aux pommes", "images/product/boudin.jpg", 
 				"Boudin noir et pommes caramélisées", 14.8, 3, 48, strongMeals, DayOfWeek.SUNDAY));
-		productRepository.save(new Product("Croissant au beurre", "images/products/croissant.jpg", 
+		productRepository.save(new Product("Croissant au beurre", "images/product/croissant.jpg", 
 				"Pâte feuilletée et beurre", 0.9, 34, 1181, lightMeals, allDays));
-		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/products/british.jpg", 
+		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/product/british.jpg", 
 				"Toasts, œufs sur le plat, bacon, saucisses, tomates, galette de pommes de terre et champignons", 1.1, 25, 1023, strongMeals, weekendDays));
-		productRepository.save(new Product("Salade césar", "images/products/salade.jpg", 
+		productRepository.save(new Product("Salade césar", "images/product/salade.jpg", 
 				"Salade verte, poulet grillé, croûtons et assaisonnement", 9.9, 15, 592, strongMeals, allDays));
 		
 		Actuality actuality1 = new Actuality("Hello world", 
@@ -133,6 +159,66 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		for (int i = 0; i < 100; i++)
 			actualityRepository.save(new Actuality("Test n°" + (i + 1), "M. Test", "Ceci est le test n°" + (i + 1) + ".", "images/actuality/test.jpg", 
 					"Si nous vous testions le test, que testeriez-vous ? Un sacré test en perspective...", LocalDateTime.of(2019-i, 9, 1, 12, 36)));
+		Company c = new Company("company", "123", "phone", "addess", "zipecode", "city", "name");
+		Company c2 = new Company("company2", "123", "phone", "addess", "zipecode", "city", "name");
+		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");
+		Company c4 = new Company("company4", "123", "phone", "addess", "zipecode", "city", "name");
+
+		Individual i1 = new Individual("email1", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i3 = new Individual("email3", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i4 = new Individual("email4", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+
+
+		Command c1 = new Command(1, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c6 = new Command(3, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c7 = new Command(4, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		Command c5 = new Command(5, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
+		c1.setUser(i3);
+		c6.setUser(c3);
+		c7.setUser(c3);
+		c5.setUser(c3);
+		Product p1 = new Product("label", "imageRelp", "comp", 12.0, 10);
+		Product p2 = new Product("label", "imageRelp", "comp", 12.0, 10);
+		Product p3 = new Product("label", "imageRelp", "comp", 12.0, 10);
+
+		CommandLine cl = new CommandLine();
+		cl.setCommand(c1);
+		cl.setCommandLineId(1);
+		cl.setEffectivePrice(10.2);
+		cl.setProduct(p1);
+		cl.setQuantity(2);
+		
+		CommandLine cl2 = new CommandLine();
+		cl2.setCommand(c1);
+		cl2.setCommandLineId(2);
+		cl2.setEffectivePrice(10.2);
+		cl2.setProduct(p1);
+		cl2.setQuantity(2);		
+		
+	
+		productRep.save(p1);
+		productRep.save(p2);
+		productRep.save(p3);
+		individualRepo.save(i3);
+
+		companyRepo.save(c2);
+		companyRepo.save(c);
+		companyRepo.save(c3);
+		companyRepo.save(c4);
+		
+		//individualRepo.save(i);
+		individualRepo.save(i1);
+		individualRepo.save(i3);
+		individualRepo.save(i4);
+		individualRepo.save(i5);
+		commandRepo.save(c1);
+		commandRepo.save(c6);
+		commandRepo.save(c7);
+		commandRepo.save(c5);
+		
+		clr.save(cl);
+		clr.save(cl2);
 	}
 	
 
