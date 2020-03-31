@@ -28,6 +28,8 @@ import { ProductsListComponent } from './product/products-list/products-list.com
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { MealsManagementComponent } from './meal/meals-management/meals-management.component';
+import { MealsListComponent } from './meal/meals-list/meals-list.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -48,7 +50,9 @@ registerLocaleData(localeFr, 'fr');
     ActualitiesSliderComponent,
     OrderHistoryComponent,
     UserProfileComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    MealsManagementComponent,
+    MealsListComponent
   ],
   imports: [
     BrowserModule,
