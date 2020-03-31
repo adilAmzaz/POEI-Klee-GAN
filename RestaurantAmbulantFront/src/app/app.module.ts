@@ -25,6 +25,10 @@ import { OrderHistoryComponent } from './history/order-history/order-history.com
 import { FormsModule } from '@angular/forms';
 import { ProductsListComponent } from './product/products-list/products-list.component';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
 @NgModule({
   declarations: [
     AppComponent,

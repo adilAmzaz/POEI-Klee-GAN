@@ -85,35 +85,35 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		mealRepository.save(teatime);
 		mealRepository.save(dinner);
 		
-		productRepository.save(new Product("Rôti de bœuf au feu de bois", "images/products/roti.jpg", 
+		productRepository.save(new Product("Rôti de bœuf au feu de bois", "images/product/roti.jpg", 
 				"Viande de bœuf et condiments", 12.0, 10, 115, strongMeals, allDays));
-		productRepository.save(new Product("Pain au chocolat", "images/products/chocolatine.jpg", 
+		productRepository.save(new Product("Pain au chocolat", "images/product/chocolatine.jpg", 
 				"Pâte feuilletée et chocolat", 1.1, 25, 1023, lightMeals, allDays));
-		productRepository.save(new Product("Pommes de terre frites", "images/products/frites.jpg", 
+		productRepository.save(new Product("Pommes de terre frites", "images/product/frites.jpg", 
 				"Pommes de terre et condiments", 3.5, 33, 841, strongMeals, allDays));
-		productRepository.save(new Product("Chocolat chaud", "images/products/chocolat.jpg", 
+		productRepository.save(new Product("Chocolat chaud", "images/product/chocolat.jpg", 
 				"Lait, chocolat et sucre", 2.0, 18, 910, lightMeals, allDays));
-		productRepository.save(new Product("Spaghetti à la carbonara", "images/products/carbonara.jpg", 
+		productRepository.save(new Product("Spaghetti à la carbonara", "images/product/carbonara.jpg", 
 				"Pâtes, lardons, crême et parmesan", 10.5, 12, 511, strongMeals, allDays));
-		productRepository.save(new Product("Soupe à la tomate", "images/products/soupe.jpg", 
+		productRepository.save(new Product("Soupe à la tomate", "images/product/soupe.jpg", 
 				"Tomate, pomme de terre, oignon et condiments", 4.6, 18, 652, strongMeals, weekDays));
-		productRepository.save(new Product("Brochettes d'agneau braisé", "images/products/brochettes.jpg", 
+		productRepository.save(new Product("Brochettes d'agneau braisé", "images/product/brochettes.jpg", 
 				"Viande d'agneau, oignon, courgette, poivron et condiments", 15.0, 4, 59, strongMeals, weekendDays));
-		productRepository.save(new Product("Jus d'orange frais", "images/products/jus.jpg", 
+		productRepository.save(new Product("Jus d'orange frais", "images/product/jus.jpg", 
 				"Pâte feuilletée et chocolat", 1.8, 43, 1637, allMeals, allDays));
-		productRepository.save(new Product("Salade de fruits", "images/products/saladefruits.jpg", 
+		productRepository.save(new Product("Salade de fruits", "images/product/saladefruits.jpg", 
 				"Fruits de saison", 5.0, 22, 711, allMeals, allDays));
-		productRepository.save(new Product("Poulet frit", "images/products/poulet.jpg", 
+		productRepository.save(new Product("Poulet frit", "images/product/poulet.jpg", 
 				"Viande de poulet et panure", 8.0, 19, 813, strongMeals, weekDays));
-		productRepository.save(new Product("Gratin de chou-fleur", "images/products/gratin.jpg", 
+		productRepository.save(new Product("Gratin de chou-fleur", "images/product/gratin.jpg", 
 				"Chou-fleur, sauce béchamel et emmental", 8.5, 14, 546, strongMeals, weekDays));
-		productRepository.save(new Product("Boudin aux pommes", "images/products/boudin.jpg", 
+		productRepository.save(new Product("Boudin aux pommes", "images/product/boudin.jpg", 
 				"Boudin noir et pommes caramélisées", 14.8, 3, 48, strongMeals, DayOfWeek.SUNDAY));
-		productRepository.save(new Product("Croissant au beurre", "images/products/croissant.jpg", 
+		productRepository.save(new Product("Croissant au beurre", "images/product/croissant.jpg", 
 				"Pâte feuilletée et beurre", 0.9, 34, 1181, lightMeals, allDays));
-		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/products/british.jpg", 
+		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/product/british.jpg", 
 				"Toasts, œufs sur le plat, bacon, saucisses, tomates, galette de pommes de terre et champignons", 1.1, 25, 1023, strongMeals, weekendDays));
-		productRepository.save(new Product("Salade césar", "images/products/salade.jpg", 
+		productRepository.save(new Product("Salade césar", "images/product/salade.jpg", 
 				"Salade verte, poulet grillé, croûtons et assaisonnement", 9.9, 15, 592, strongMeals, allDays));
 		
 		Actuality actuality1 = new Actuality("Hello world", 

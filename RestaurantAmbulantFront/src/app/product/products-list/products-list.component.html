@@ -1,4 +1,20 @@
-<div style="padding-top: 70px;">
-    <li *ngFor="let product of products">{{product.label}} (<span *ngFor="let meal of product.meals">{{meal.name}}, </span>)
-        (<span *ngFor="let day of product.days">{{days[day]}}, </span>)</li>
+<div class="row mx-4" style="padding-top: 70px;">
+    <div *ngFor="let product of products" class="col">
+        <div class="flip-card mx-auto my-3">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="{{endPoint}}{{product.imageRelativePath}}" alt=""
+                        style="height: 100%; width: 100%; object-fit: cover;">
+                </div>
+                <div class="flip-card-side p-3">
+                    <h4>{{product.label}}</h4>
+                    <p class="composition">{{product.composition}}</p>
+                    <p class="price">{{product.price | currency:'EUR':'symbol':'1.2-2':'fr'}}</p>
+                    <p class="meals"><span *ngFor="let meal of product.meals" class="badge {{meal.name}}">{{meal.name}}</span></p>
+                    <p class="days"><span *ngFor="let day of product.days" class="badge {{days[day]}}">{{days[day]}}</span></p>
+                    <p><button class="btn order">Commander</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
