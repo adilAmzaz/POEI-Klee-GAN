@@ -23,6 +23,7 @@ import { ActualitiesManagementComponent } from './actuality/actualities-manageme
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
 import { OrderHistoryComponent } from './history/order-history/order-history.component';
 import { FormsModule } from '@angular/forms';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ProductsListComponent } from './product/products-list/products-list.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -46,6 +47,7 @@ registerLocaleData(localeFr, 'fr');
     ActualitiesManagementComponent,
     ActualitiesSliderComponent,
     OrderHistoryComponent,
+    UserProfileComponent,
     ProductsListComponent
   ],
   imports: [

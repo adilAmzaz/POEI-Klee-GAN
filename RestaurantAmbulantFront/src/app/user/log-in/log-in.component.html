@@ -1,1 +1,34 @@
-<p>log-in works!</p>
+<div class="mx-auto" style="max-width: 800px; padding-top: 80px;">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <table>
+            <tr>
+                <td colspan="2"><h4>Identifiants : </h4></td>
+            </tr>
+            <tr>
+                <td><label>Adresse E-Mail : </label></td>
+                <td>
+                    <input type="email" class="form-control" id="email"
+                        formControlName="email" placeholder="john.doe@random.rng" required/>
+                </td>
+                <td *ngIf="!loginForm.controls['email'].valid">{{getErrorMessage("email")}}</td>
+            </tr>
+            <tr>
+                <td><label>Mot de Passe : </label></td>
+                <td>
+                    <input type="password" class="form-control" id="password"
+                        formControlName="password" placeholder="********" required/>
+                </td>
+                <td *ngIf="!loginForm.controls['password'].valid">{{getErrorMessage("password")}}</td>
+            </tr>
+            <tr><br/></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Se connecter</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

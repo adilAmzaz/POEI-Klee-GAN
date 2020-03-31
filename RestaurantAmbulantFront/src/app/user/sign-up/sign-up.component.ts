@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn } from"@angular/forms"; 
+import { FormGroup, FormControl, Validators } from"@angular/forms"; 
 import { AddressForm } from 'src/app/auxi/form/address-form';
+import { UserHttpService } from '../user-http.service';
+import { User, Company, Individual } from 'src/app/models/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +11,7 @@ import { AddressForm } from 'src/app/auxi/form/address-form';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor()
+  constructor(private _userHttpService: UserHttpService)
   {
     this.userForm.controls['isCompany'].valueChanges.subscribe(
       (state: boolean) =>
@@ -33,7 +35,8 @@ export class SignUpComponent implements OnInit {
       });
     this.userForm.controls['isCompany'].setValue(false);
     this.userForm.controls['isFemale'].setValue(true);
-    this.userForm.controls['birthDate'].setValue(Date.now());
+    this.userForm.controls['birthDate'].setValue(
+      new Date(Date.now()).toISOString().substring(0, 10));
     
     //this.userForm.valueChanges.subscribe()
   }
@@ -46,23 +49,54 @@ export class SignUpComponent implements OnInit {
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
       password: new FormControl(null, [Validators.required]),
       isCompany: new FormControl(null),
-      companyName: new FormControl(""),
-      firstName: new FormControl(""),
-      lastName: new FormControl(""),
+      companyName: new FormControl(),
+      firstName: new FormControl(),
+      lastName: new FormControl(),
       addressForm: new AddressForm(),
-      telephone: new FormControl(""),
+      phone: new FormControl(),
       birthDate: new FormControl(null),
       isFemale: new FormControl(null, [Validators.required])
       
     }
   )
-  _signInAttempted: boolean = false;
+  signInAttempted: boolean = false;
 
   signIn(): void
   {
-    this._signInAttempted = true;
+    this.signInAttempted = true;
     if (!this.userForm.invalid)
-      console.log("Sign-in called.");
+    {
+      let user: User;
+      if (this.isCompany())
+      {
+        console.log("Sign-in called for new User:", this.generateCompany());
+        this._userHttpService.addCompany(this.generateCompany()).subscribe(
+          (data) =>
+          {
+            console.log("Complete (AddCompany): ", data);
+          }
+        );
+        //user = this.generateCompany();
+      }
+      else
+      {
+        //user = this.generateIndividual();
+        console.log("Sign-in called for new User:", this.generateIndividual());
+        this._userHttpService.addIndividual(this.generateIndividual()).subscribe(
+          (data) =>
+          {
+            console.log("Complete (AddIndividual): ", data);
+          }
+        );
+      }
+      // this._userHttpService.addUser(user).subscribe(
+      //   (data) =>
+      //   {
+      //     console.log(data);
+      //   }
+      // )
+      
+    }
   }
 
   isCompany(): boolean
@@ -73,7 +107,7 @@ export class SignUpComponent implements OnInit {
   getErrorMessage(form: string): string
   {
     const control = this.userForm.controls[form];
-    if ((control.touched || this._signInAttempted))
+    if ((control.touched || this.signInAttempted))
     {
 
       //const mailError = control.getError('validatorMail', [form]);
@@ -87,6 +121,37 @@ export class SignUpComponent implements OnInit {
     }
     return "";
     
+  }
+
+  
+  generateCompany(): Company
+  {
+    let user: Company = new Company();
+    user.userId = 0;
+    user.email = this.userForm.controls['email'].value;
+    user.password = this.userForm.controls['password'].value;
+    user.phone = this.userForm.controls['phone'].value;
+    user.address = (<FormGroup>this.userForm.controls['addressForm']).controls['address'].value;
+    user.zipcode = (<FormGroup>this.userForm.controls['addressForm']).controls['zipCode'].value;
+    user.city = (<FormGroup>this.userForm.controls['addressForm']).controls['city'].value;
+    user.name = this.userForm.controls['companyName'].value;
+    return user;
+  }
+  generateIndividual(): Individual
+  {
+    let user: Individual = new Individual();
+    user.userId = 0;
+    user.email = this.userForm.controls['email'].value;
+    user.password = this.userForm.controls['password'].value;
+    user.phone = this.userForm.controls['phone'].value;
+    user.address = (<FormGroup>this.userForm.controls['addressForm']).controls['address'].value;
+    user.zipcode = (<FormGroup>this.userForm.controls['addressForm']).controls['zipCode'].value;
+    user.city = (<FormGroup>this.userForm.controls['addressForm']).controls['city'].value;
+    user.firstName = this.userForm.controls['firstName'].value;
+    user.lastName = this.userForm.controls['lastName'].value;
+    user.female = this.userForm.controls['isFemale'].value;
+    user.birthDate = <Date>this.userForm.controls['birthDate'].value;
+    return user;
   }
   // checkFormGroup(formGroup: FormGroup, errorCode: string): boolean
   // {

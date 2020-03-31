@@ -7,6 +7,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { ActualitiesListComponent } from './actuality/actualities-list/actualities-list.component';
 import { ActualityComponent } from './actuality/actuality/actuality.component';
 import { OrderHistoryComponent } from './history/order-history/order-history.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ProductsListComponent } from './product/products-list/products-list.component';
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'log-in', component: LogInComponent},
   {path: 'sign-up', component : SignUpComponent},
+  {path: 'profile', component : UserProfileComponent},
   {path: 'actualities', component : ActualitiesListComponent},
   {path: 'actualities/actuality/:id', component : ActualityComponent},
   {path: 'commands', component: OrderHistoryComponent},
