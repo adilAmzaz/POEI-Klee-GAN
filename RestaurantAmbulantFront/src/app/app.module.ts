@@ -21,7 +21,7 @@ import { ActualityComponent } from './actuality/actuality/actuality.component';
 import { ActualityEditComponent } from './actuality/actuality-edit/actuality-edit.component';
 import { ActualitiesManagementComponent } from './actuality/actualities-management/actualities-management.component';
 import { ActualitiesSliderComponent } from './actuality/actualities-slider/actualities-slider.component';
-import { OrderHistoryComponent } from './history/order-history/order-history.component';
+import { OrderHistoryComponent } from './order/order-history/order-history.component';
 import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ProductsListComponent } from './product/products-list/products-list.component';

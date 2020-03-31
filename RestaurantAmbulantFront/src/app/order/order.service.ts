@@ -8,7 +8,7 @@ import { GlobalConfig } from '../models/global-config';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderHistoryHttpServiceService {
+export class OrderService {
 
 
   constructor(private _http: HttpClient)
