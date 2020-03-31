@@ -52,7 +52,7 @@ export class SignUpComponent implements OnInit {
       companyName: new FormControl(),
       firstName: new FormControl(),
       lastName: new FormControl(),
-      addressForm: new AddressForm(),
+      addressForm: new AddressForm(null, null, null),
       phone: new FormControl(),
       birthDate: new FormControl(null),
       isFemale: new FormControl(null, [Validators.required])

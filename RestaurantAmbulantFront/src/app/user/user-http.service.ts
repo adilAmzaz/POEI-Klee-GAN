@@ -42,4 +42,13 @@ export class UserHttpService {
       user);
   }
 
+  updateCompany(company: Company)
+  {
+    return this._http.put<Company>(GlobalConfig.serverUrl + "modifycompany/" + company.userId, company);
+  }
+  updateIndividual(individual: Individual)
+  {
+    return this._http.put<Company>(GlobalConfig.serverUrl + "modifyindividual/" + individual.userId, individual);
+  }
+
 }
