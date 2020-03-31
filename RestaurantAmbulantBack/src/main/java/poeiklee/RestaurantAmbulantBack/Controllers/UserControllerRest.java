@@ -154,7 +154,7 @@ public class UserControllerRest {
 	}
 
 	@PutMapping("/modifyindividual/{id}")
-	ResponseEntity<?> replaceIndividual(@RequestBody Individual newUser, @PathVariable int id)  {
+	ResponseEntity<?> replaceIndividual(@RequestBody Individual newUser, @PathVariable String id)  {
 		 Optional<Company> company;
 		 Optional<Individual> individual;
 		/*if(newUser instanceof Company) {
@@ -166,7 +166,7 @@ public class UserControllerRest {
 			return new ResponseEntity<>("new user added successfully : "+(Company)newUser,HttpStatus.OK);
 		}*/
 		if(newUser instanceof Individual) {
-			individual = individualRepo.findById(id);
+			individual = individualRepo.findById(Integer.parseInt(id));
 			if(!individual.isPresent())
 				  return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
 			//newUser.setUserId(id);
