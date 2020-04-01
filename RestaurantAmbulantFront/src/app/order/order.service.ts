@@ -22,8 +22,7 @@ export class OrderService {
       this._router.navigate(['/products'])
     }
     else {
-      this._router.navigate(['/products'])
-      //this._router.navigate(['/log-in'])
+      this._router.navigate(['/log-in'])
     }
   }
   
