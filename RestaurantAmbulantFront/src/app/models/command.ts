@@ -7,10 +7,10 @@ export class Command {
     orderDate: Date;
     deliveryDate: Date;
     delivered: boolean;
-    deliverdDate: Date;
+    deliveredDate: Date;
     homeDelivery: boolean;
     address: string;
     zipecode: string;
     city: string;
-    //commandLine : CommandLine[];
+    commandLines : CommandLine[] = [];
 }

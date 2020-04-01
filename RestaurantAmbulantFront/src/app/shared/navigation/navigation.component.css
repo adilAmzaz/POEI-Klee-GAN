@@ -1,0 +1,38 @@
+.navbar {
+    height: 60px;
+}
+
+.order {
+    outline: none;
+    background-color: white;
+    color: rgb(175, 35, 35);
+    border: none;
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.order:hover {
+    color: white;
+    background-color: rgb(175, 35, 35);
+    transition: all 0.1s;
+}
+
+.order-sm {
+    display: none;
+}
+
+@media screen and (max-width: 787px) {
+    .navbar {
+        height: 120px;
+        display: inline;
+    }
+    .order {
+        display: none;
+    }
+    .order-sm {
+        display: inline;
+    }
+}

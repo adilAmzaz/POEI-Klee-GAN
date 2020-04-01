@@ -79,6 +79,7 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		ArrayList<Meal> strongMeals = new ArrayList<Meal>(Arrays.asList(lunch, dinner));
 		ArrayList<Meal> lightMeals = new ArrayList<Meal>(Arrays.asList(breakfast, teatime));
 		ArrayList<Meal> allMeals = new ArrayList<Meal>(Arrays.asList(breakfast, lunch, teatime, dinner));
+		ArrayList<Meal> breakfastOnly = new ArrayList<Meal>(Arrays.asList(breakfast));
 		
 		mealRepository.save(breakfast);
 		mealRepository.save(lunch);
@@ -112,7 +113,7 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		productRepository.save(new Product("Croissant au beurre", "images/product/croissant.jpg", 
 				"Pâte feuilletée et beurre", 0.9, 34, 1181, lightMeals, allDays));
 		productRepository.save(new Product("Petit-déjeuner anglais traditionnel", "images/product/british.jpg", 
-				"Toasts, œufs sur le plat, bacon, saucisses, tomates, galette de pommes de terre et champignons", 1.1, 25, 1023, strongMeals, weekendDays));
+				"Toasts, œufs sur le plat, bacon, saucisses, tomates, galette de pommes de terre et champignons", 1.1, 25, 1023, breakfastOnly, weekendDays));
 		productRepository.save(new Product("Salade césar", "images/product/salade.jpg", 
 				"Salade verte, poulet grillé, croûtons et assaisonnement", 9.9, 15, 592, strongMeals, allDays));
 		
