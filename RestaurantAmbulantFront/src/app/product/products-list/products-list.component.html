@@ -40,7 +40,40 @@
                 [innerHTML]="displayAvailableOnly?'Montrer les produits indisponibles':'Cacher les produits indisponibles'"></a>
         </div>
     </form>
-    <button class="btn btn-warning" (click)="deleteBasket()" style="margin-top: 50px;">Annuler la commande</button>
+    <hr>
+    <table style="margin-top: 15px;">
+        <col width="228px">
+        <col width="24px">
+        <col width="30px">
+        <col width="24px">
+        <col width="24px">
+        <tr *ngFor="let commandLine of basket.commandLines" class="line">
+            <td class="composition" [ngStyle]="{'color': isAvailable(commandLine.product)?'black':'red'}">
+                {{commandLine.product.label}}
+            </td>
+            <td><button class="btn btn-manage" (click)="riseQuantity(commandLine,-1)">-</button></td>
+            <td class="composition text-center">{{commandLine.quantity}}</td>
+            <td><button class="btn btn-manage" (click)="riseQuantity(commandLine,1)">+</button></td>
+            <td><button class="btn btn-manage suppress" (click)="deleteLine(commandLine)">x</button></td>
+        </tr>
+    </table>
+    <hr>
+    <div class="fluid-container">
+        <div class="row">
+            <div class="col text-center">
+                <p class="price" style="margin-top: 10px;">
+                    Prix total : {{basket.effectivePrice | currency:'EUR':'symbol':'1.2-2':'fr'}}
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="col text-center">
+                <button class="btn btn-primary validate" style="margin-right: 10px;" (click)="validateBasket()"
+                    [disabled]="!basketIsValid()">Valider</button>
+                <button class="btn btn-warning cancel" (click)="deleteBasket()">Annuler</button>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="fluid-container catalogue-wrapper" [ngClass]="{'catalogue-shrinked': hasBasket()}">
 <div class="row mx-4 catalogue">
@@ -61,10 +94,11 @@
                         [ngClass]="{'disabled': !mealsDisplay.get(meal.mealId)}">{{meal.name}}</span></p>
                     <p class="days"><span *ngFor="let day of product.days" class="badge {{Days[day]}}"
                         [ngClass]="{'disabled': !daysDisplay.get(day)}">{{Days[day]}}</span></p>
-                    <p><button class="btn order">Commander</button></p>
+                    <p><button class="btn order" (click)="hasBasket()?addBasket(product):createBasket(product)">Commander</button></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </div>
+<div id="commandSentMessage" [ngClass]="{'show': commandIsSent()}">Votre commande a bien été enregistrée</div>
