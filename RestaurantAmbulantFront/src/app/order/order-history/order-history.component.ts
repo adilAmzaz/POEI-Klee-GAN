@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Command } from 'src/app/models/command';
 import { OrderService } from '../order.service';
+import { LogInComponent } from 'src/app/user/log-in/log-in.component';
+import { User, Individual } from 'src/app/models/user';
 
 @Component({
   selector: 'app-order-history',
@@ -9,7 +11,7 @@ import { OrderService } from '../order.service';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  emailUser : string = "company3";
+  emailUser : string = LogInComponent.getConnectedUser().email;
   idCommand : string = "";
   command : Command;
   listCommands : Command[]=[];
@@ -17,6 +19,7 @@ export class OrderHistoryComponent implements OnInit {
 
   constructor(private _orderService: OrderService) { }
 
+  user : User;
   ngOnInit(): void {
     this._orderService.getCommands().subscribe(
       (commands) =>
@@ -45,11 +48,29 @@ export class OrderHistoryComponent implements OnInit {
       (commandRecu) =>
       {
         this.listCommandsByEmail = commandRecu;
+        console.log("hgjkhjkhjkhjkhjkh",this.listCommandsByEmail)
         
       }
     );
     return commandRecuF;
   }
   //listCommandsByEmail : Command[]=this.getCommandByEmail();
-  
+  isAdmin(): boolean
+  {
+    if (LogInComponent.getConnectedUser()!= null)
+      {
+        if ('adminRights' in LogInComponent.getConnectedUser()){
+          this.user = LogInComponent.getConnectedUser();
+          if((<Individual>this.user).adminRights== true)
+            return true;
+        }
+        
+          
+      }
+    else{
+      return false;
+    }
+      
+      
+  }
 }
