@@ -165,10 +165,10 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");
 		Company c4 = new Company("company4", "123", "phone", "addess", "zipecode", "city", "name");
 
-		Individual i1 = new Individual("email1", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i3 = new Individual("email3", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i4 = new Individual("email4", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i1 = new Individual("aa@aa.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i3 = new Individual("aaa@aa.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i4 = new Individual("zz@zz.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i5 = new Individual("zzz@zz.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 
 
 		Command c1 = new Command(1, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");

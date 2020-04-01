@@ -84,8 +84,8 @@ export class LogInComponent implements OnInit {
   }
   static disconnect()
   {
-    sessionStorage.removeItem("user");
     Basket.delete();
+    sessionStorage.removeItem("user");
   }
   static getConnectedUser(): User
   {
