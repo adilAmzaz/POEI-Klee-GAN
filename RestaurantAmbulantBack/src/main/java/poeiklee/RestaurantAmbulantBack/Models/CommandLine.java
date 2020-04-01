@@ -16,7 +16,7 @@ public class CommandLine {
 	@JsonBackReference
 	@ManyToOne
 	private Product product;
-	@JsonBackReference
+	@JsonBackReference(value="command")
 	@Basic(fetch=FetchType.LAZY)
 	@ManyToOne
 	private Command command;

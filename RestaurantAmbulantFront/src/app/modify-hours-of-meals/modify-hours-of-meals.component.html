@@ -1,0 +1,36 @@
+
+<div class="container" style="padding-top: 70px;">
+    <h2>Bordered Table</h2>
+    <p>Liste d </p>
+    <table class="table table-striped" *ngIf="meals.length > 0">
+      <thead>
+        <tr >
+          <th>MealId</th>
+          <th>Name</th>
+          <th colspan="2" style='text-align:center;vertical-align:middle'>BeginHour</th>
+          <th colspan="2"  style='text-align:center;vertical-align:middle'> endHour</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+            <td rowspan="2">{{meal.mealId}}</td>
+            <td rowspan="2">{{meal.name}}</td>
+            <td >valeur Actuelle</td>
+            <td>nouvlle valeur</td>
+            <td >valeur Actuelle</td>
+            <td>nouvlle valeur</td>
+        </tr>
+        <tr>
+            <td>{{meal.beginHour}}</td>
+            <td><input type="time" class="form-control" id="name"  required [(ngModel)]="meal.beginHour" /></td>
+            <td>{{meal.endHour}}</td>
+            <td><input type="time" class="form-control" id="name"  required [(ngModel)]="meal.endHour" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="suivant()">Suivant</button>
+    <br/>
+    <button (click)="submit()">Submit</button>
+  </div>
+

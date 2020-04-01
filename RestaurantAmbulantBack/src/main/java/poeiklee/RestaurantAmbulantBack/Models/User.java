@@ -28,7 +28,7 @@ public class User {
 	private String address;
 	private String zipcode;
 	private String city;
-	@JsonBackReference
+	@JsonBackReference(value="commands")
 	@Basic(fetch=FetchType.LAZY)
 	@OneToMany(
 		    mappedBy = "user",

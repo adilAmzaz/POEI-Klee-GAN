@@ -30,7 +30,7 @@ public class Command {
 	private String address;
 	private String zipecode;
 	private String city;
-	@JsonBackReference
+	@JsonBackReference(value="command-line")
 	@Basic(fetch=FetchType.LAZY)
 	@OneToMany(
 		    mappedBy = "command",
