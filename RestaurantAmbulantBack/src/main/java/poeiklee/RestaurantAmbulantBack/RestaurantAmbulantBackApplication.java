@@ -165,9 +165,9 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");
 		Company c4 = new Company("company4", "123", "phone", "addess", "zipecode", "city", "name");
 
-		Individual i1 = new Individual("email1", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i1 = new Individual("email1@gmail.com", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 		Individual i3 = new Individual("email3", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
-		Individual i4 = new Individual("email4", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i4 = new Individual("email4@gmail.com", "password", "phone", "address", "zipecode", "city", "latname", "fristname", false,   LocalDate.now(), false);
 		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 
 
@@ -175,10 +175,10 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		Command c6 = new Command(3, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
 		Command c7 = new Command(4, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
 		Command c5 = new Command(5, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "address", "zipeCode", "city");
-		c1.setUser(i3);
-		c6.setUser(c3);
-		c7.setUser(c3);
-		c5.setUser(c3);
+		c1.setUser(i4);
+		c6.setUser(i4);
+		c7.setUser(i4);
+		c5.setUser(i1);
 		Product p1 = new Product("label", "imageRelp", "comp", 12.0, 10);
 		Product p2 = new Product("label", "imageRelp", "comp", 12.0, 10);
 		Product p3 = new Product("label", "imageRelp", "comp", 12.0, 10);
