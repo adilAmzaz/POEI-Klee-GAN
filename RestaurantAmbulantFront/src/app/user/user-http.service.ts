@@ -26,11 +26,11 @@ export class UserHttpService {
     return this._http.get<User>(GlobalConfig.serverUrl+"getuser/"+email);
   }
 
-  addCompany(company: Company)
+  addCompany(company: Company): Observable<Company>
   {
     return this._http.post<Company>(GlobalConfig.serverUrl + "addCompany", company);
   }
-  addIndividual(individual: Individual)
+  addIndividual(individual: Individual): Observable<Individual>
   {
     return this._http.post<Individual>(GlobalConfig.serverUrl + "addIndividual", individual);
   }

@@ -3,6 +3,7 @@ import { UserHttpService } from '../user-http.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { Basket } from 'src/app/models/basket';
 
 @Component({
   selector: 'app-log-in',
@@ -84,6 +85,7 @@ export class LogInComponent implements OnInit {
   static disconnect()
   {
     sessionStorage.removeItem("user");
+    Basket.delete();
   }
   static getConnectedUser(): User
   {

@@ -32,6 +32,7 @@ import { MealsManagementComponent } from './meal/meals-management/meals-manageme
 import { MealsListComponent } from './meal/meals-list/meals-list.component';
 import {TimelineComponent} from 'src/app/timeline/timeline.component';
 import { ModifyHoursOfMealsComponent } from './modify-hours-of-meals/modify-hours-of-meals.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -56,7 +57,8 @@ registerLocaleData(localeFr, 'fr');
     MealsManagementComponent,
     MealsListComponent,
     TimelineComponent,
-    ModifyHoursOfMealsComponent
+    ModifyHoursOfMealsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
