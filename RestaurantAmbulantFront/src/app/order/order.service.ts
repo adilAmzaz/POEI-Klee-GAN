@@ -5,6 +5,8 @@ import { Command } from '../models/command';
 import { GlobalConfig } from '../models/global-config';
 import { LogInComponent } from '../user/log-in/log-in.component';
 import { Router } from '@angular/router';
+import { Product } from '../models/product';
+import { Basket } from '../models/basket';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +19,13 @@ export class OrderService {
     private _router: Router
   ) { }
 
-  createBasket() {
+  createBasket(product : Product) {
+    Basket.create(product)
     if (LogInComponent.isConnected()) {
       this._router.navigate(['/products'])
     }
     else {
-      this._router.navigate(['/products'])
-      //this._router.navigate(['/log-in'])
+      this._router.navigate(['/log-in'])
     }
   }
   

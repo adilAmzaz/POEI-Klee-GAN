@@ -169,6 +169,50 @@
     background-color: grey;
 }
 
+.line>td {
+    padding-bottom: 10px;
+}
+
+.btn-manage {
+    background-color: seagreen;
+    color: lightgray;
+    width: 20px;
+    height: 30px;
+    padding: 0;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.suppress {
+    background-color: rgb(175, 35, 35);
+}
+
+.btn-manage:hover {
+    background-color: rgb(22, 100, 56);
+    color: white;
+}
+
+.suppress:hover {
+    background-color: rgb(145, 18, 18);
+}
+
+.validate {
+    border: none;
+    background-color: teal;
+}
+
+.validate:hover {
+    background-color: rgb(7, 97, 97);
+}
+
+.validate:disabled {
+    cursor: not-allowed;
+}
+
+.cancel {
+    color: white;
+}
+
 @media screen and (max-width: 900px) {
     .catalogue-shrinked {
         margin-left: 15px;
@@ -210,4 +254,47 @@
     .basket {
         padding-top: 215px;
     }
+}
+
+#commandSentMessage {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: rgb(189, 9, 9);
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    font-size: 30px;
+}
+  
+#commandSentMessage.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+}
+  
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }

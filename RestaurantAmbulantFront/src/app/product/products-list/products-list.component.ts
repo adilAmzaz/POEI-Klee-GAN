@@ -7,6 +7,9 @@ import { MealService } from 'src/app/meal/meal.service';
 import { Meal } from 'src/app/models/meal';
 import { NgbDateParserFormatter, NgbDateStruct, NgbDatepickerI18n, NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Basket } from 'src/app/models/basket';
+import { CommandLine } from 'src/app/models/command-line';
+import { OrderService } from 'src/app/order/order.service';
+import { LogInComponent } from 'src/app/user/log-in/log-in.component';
 
 const I18N_VALUES = {
   'fr': {
@@ -86,6 +89,7 @@ export class ProductsListComponent implements OnInit {
   basket = Basket
   deliveryTimes : string[] = []
   displayAvailableOnly : boolean = false
+  commandSent : boolean = false
 
   endPoint : string = GlobalConfig.serverUrl
 
@@ -139,6 +143,10 @@ export class ProductsListComponent implements OnInit {
     return this._ngbCalendar.getNext(this._ngbCalendar.getToday(), "d", 13)
   }
 
+  commandIsSent() : boolean {
+    return this.commandSent
+  }
+
   onMealChanged() {
     this.updateAvailabilities()
     this.deliveryTimes = []
@@ -162,10 +170,14 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private _productService : ProductService,
     private _mealService : MealService,
-    private _ngbCalendar: NgbCalendar
+    private _ngbCalendar: NgbCalendar,
+    private _orderService: OrderService
   ) { }
 
   ngOnInit(): void {
+    if (!LogInComponent.isConnected()) {
+      Basket.delete()
+    }
     this.days.forEach(day => this.daysDisplay.set(day, true))
     this._mealService.getMeals().subscribe((response) => {
       this.meals = response
@@ -178,6 +190,40 @@ export class ProductsListComponent implements OnInit {
 
   hasBasket() {
     return Basket.hasBasket
+  }
+
+  createBasket(product : Product) {
+    this._orderService.createBasket(product)
+  }
+
+  addBasket(product : Product) {
+    Basket.add(product)
+  }
+
+  riseQuantity(commandLine : CommandLine, toAdd : number) {
+    Basket.riseQuantity(commandLine, toAdd)
+  }
+
+  deleteLine(commandLine : CommandLine) {
+    Basket.deleteLine(commandLine)
+  }
+
+  basketIsValid() : boolean {
+    if (Basket.deliveryDay == undefined || Basket.deliveryHour == undefined || Basket.commandLines.length == 0) {
+      return false
+    }
+    let isValid : boolean = true
+    Basket.commandLines.forEach(commandLine => {if (!this.isAvailable(commandLine.product)) isValid = false})
+    return isValid
+  }
+
+  validateBasket() {
+    //Ici nous devrions enregistrer le panier en back, mais nous n'avons pas eu le temps de le coder :/
+    this.deleteBasket()
+    this.commandSent = true
+    setTimeout(() => {
+      this.commandSent = false
+    }, 4000);
   }
 
   deleteBasket() {

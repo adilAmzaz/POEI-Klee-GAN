@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Meal } from '../models/meal';
 import { MealService } from '../meal/meal.service';
+import { UserHttpService } from '../user/user-http.service';
+import { User, Individual } from '../models/user';
+import { LogInComponent } from '../user/log-in/log-in.component';
 
 @Component({
   selector: 'app-modify-hours-of-meals',
@@ -12,8 +15,11 @@ export class ModifyHoursOfMealsComponent implements OnInit {
   meals : Meal[];
   meal : Meal;
   count : number = 0;
+  isAdminVar : boolean = false;
+  user : Individual;
 
-  constructor(private _mealService : MealService) { }
+  constructor(private _mealService : MealService,
+              private _userService : UserHttpService) { }
 
   ngOnInit(): void {
     this._mealService.getMeals().subscribe(response =>{
@@ -46,6 +52,7 @@ export class ModifyHoursOfMealsComponent implements OnInit {
 
       }
   }
+
 
 
 }
