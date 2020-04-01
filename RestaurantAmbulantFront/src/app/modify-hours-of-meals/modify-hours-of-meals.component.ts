@@ -23,8 +23,7 @@ export class ModifyHoursOfMealsComponent implements OnInit {
     this.meal = this.meals[0]
     setTimeout(function() {
       console.log('Teskljkljkljkljkljklt');
-      
-  }, 2000);
+       }, 2000);
   }
 
   submit()
@@ -48,6 +47,5 @@ export class ModifyHoursOfMealsComponent implements OnInit {
       }
   }
 
-setTimeout(this.suivant(),1000);
 
 }
