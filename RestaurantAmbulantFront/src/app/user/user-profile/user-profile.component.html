@@ -1,6 +1,8 @@
-<div class="mx-auto" style="max-width: 800px; padding-top: 80px;">
-    <form [formGroup]="idForm" (ngSubmit)="updateIdentifiers()">
-        <table>
+<div class="mx-auto container-fluid" style="max-width: 800px; padding-top: 80px;
+    padding-bottom: 50px; background-color: #efefea;">
+    <form class="row" [formGroup]="idForm" (ngSubmit)="updateIdentifiers()">
+        <div class="col-1"></div>
+        <table class="col-10">
             <tr>
                 <td colspan="2"><h4>Identifiants : </h4></td>
             </tr>
@@ -38,12 +40,14 @@
                 </td>
             </tr>
         </table>
+        <div class="col-1"></div>
     </form>
 
     <tr><br/></tr>
 
-    <form [formGroup]="infoForm" (ngSubmit)="updateInfo()">
-        <table>
+    <form class="row" [formGroup]="infoForm" (ngSubmit)="updateInfo()">
+        <div class="col-1"></div>
+        <table class="col-10">
             <tr>
                 <td colspan="2"><h4>Informations : </h4></td>
             </tr>
@@ -153,5 +157,6 @@
                 </td>
             </tr>
         </table>
+        <div class="col-1"></div>
     </form>
 </div>

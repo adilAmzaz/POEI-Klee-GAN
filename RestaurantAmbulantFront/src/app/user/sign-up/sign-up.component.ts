@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from"@angular/forms";
 import { AddressForm } from 'src/app/auxi/form/address-form';
 import { UserHttpService } from '../user-http.service';
 import { User, Company, Individual } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,8 @@ import { User, Company, Individual } from 'src/app/models/user';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private _userHttpService: UserHttpService)
+  constructor(private _userHttpService: UserHttpService,
+    private _router: Router)
   {
     this.userForm.controls['isCompany'].valueChanges.subscribe(
       (state: boolean) =>
@@ -69,11 +71,19 @@ export class SignUpComponent implements OnInit {
       let user: User;
       if (this.isCompany())
       {
-        console.log("Sign-in called for new User:", this.generateCompany());
+        //console.log("Sign-in called for new User:", this.generateCompany());
         this._userHttpService.addCompany(this.generateCompany()).subscribe(
           (data) =>
           {
-            console.log("Complete (AddCompany): ", data);
+            if (data != null)
+            {
+              this._router.navigate(['log-in']);
+            }
+            else
+            {
+              console.log("Sign up failed: ", data);
+            }
+            //console.log("Complete (AddCompany): ", data);
           }
         );
         //user = this.generateCompany();
@@ -81,14 +91,23 @@ export class SignUpComponent implements OnInit {
       else
       {
         //user = this.generateIndividual();
-        console.log("Sign-in called for new User:", this.generateIndividual());
+        //console.log("Sign-in called for new User:", this.generateIndividual());
         this._userHttpService.addIndividual(this.generateIndividual()).subscribe(
           (data) =>
           {
-            console.log("Complete (AddIndividual): ", data);
+            this._router.navigate(['log-in']);
+            if (data != null)
+            {
+            }
+            else
+            {
+              console.log("Sign up failed: ", data);
+            }
+            //console.log("Complete (AddIndividual): ", data);
           }
         );
       }
+
       // this._userHttpService.addUser(user).subscribe(
       //   (data) =>
       //   {

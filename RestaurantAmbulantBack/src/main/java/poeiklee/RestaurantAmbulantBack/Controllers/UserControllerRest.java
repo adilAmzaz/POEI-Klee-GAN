@@ -119,7 +119,7 @@ public class UserControllerRest {
     	if (reqUser.getEmail().isEmpty())
 			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
     	userRepo.save(reqUser);
-		return new ResponseEntity<>("Added successfully",HttpStatus.OK);
+		return ResponseEntity.ok(reqUser);
     }
     
 	@PostMapping("/addIndividual")
@@ -131,7 +131,7 @@ public class UserControllerRest {
 			return  new ResponseEntity<>("Id already exist", HttpStatus.BAD_REQUEST);
 
 		individualRepo.save(reqIndividual);
-		return new ResponseEntity<>("added successfully",HttpStatus.OK);
+		return ResponseEntity.ok(reqIndividual);
 	}
 
 	@PostMapping("/addCompany")
@@ -140,7 +140,7 @@ public class UserControllerRest {
 			return  new ResponseEntity<>("Email Obligatory", HttpStatus.BAD_REQUEST);
 
 		companyRepo.save(reqCompany);
-		return new ResponseEntity<>("added successfully",HttpStatus.OK);
+		return ResponseEntity.ok(reqCompany);
 	}
 
 	@DeleteMapping("/deleteuser")
@@ -148,9 +148,9 @@ public class UserControllerRest {
 		Optional<User> u = userRepo.findById(id);
 		if(u.isPresent()) {
 			userRepo.deleteById(id);
-			return new ResponseEntity<>("user deleted"+u.toString(),HttpStatus.OK);
+			return ResponseEntity.ok(u);
 		}
-		return new ResponseEntity<>("user not found",HttpStatus.OK);
+		return new ResponseEntity<>("user not found",HttpStatus.NOT_FOUND);
 	}
 
 	@PutMapping("/modifyindividual/{id}")
@@ -171,7 +171,7 @@ public class UserControllerRest {
 				  return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
 			//newUser.setUserId(id);
 			individualRepo.save((Individual)newUser);
-			return new ResponseEntity<>("new user added successfully : "+(Individual)newUser,HttpStatus.OK);
+			return ResponseEntity.ok(newUser);
 		}
 	  return new ResponseEntity<>("Accept only Individual entity",HttpStatus.BAD_REQUEST);
 
@@ -187,7 +187,7 @@ public class UserControllerRest {
 				return ResponseEntity.notFound().build();
 			//newUser.setUserId(id);
 			companyRepo.save((Company) newUser);
-			return new ResponseEntity<>("new user added successfully : "+(Company)newUser,HttpStatus.OK);
+			return ResponseEntity.ok(newUser);
 		}
 		/*if(newUser instanceof Individual) {
 			individual = individualRepo.findById(id);

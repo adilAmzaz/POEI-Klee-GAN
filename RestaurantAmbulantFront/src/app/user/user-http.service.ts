@@ -12,7 +12,8 @@ export class UserHttpService {
   constructor(private _http: HttpClient)
   { }
   
-  getUsers(): Observable<User[]> {
+  getUsers(): Observable<User[]>
+  {
     return this._http.get<User[]>(GlobalConfig.getUsersEndPoint);
   }
 
@@ -27,20 +28,18 @@ export class UserHttpService {
 
   addCompany(company: Company)
   {
-    console.log(GlobalConfig.serverUrl + "addCompany");
     return this._http.post<Company>(GlobalConfig.serverUrl + "addCompany", company);
   }
   addIndividual(individual: Individual)
   {
-    console.log(GlobalConfig.serverUrl + "addIndividual");
     return this._http.post<Individual>(GlobalConfig.serverUrl + "addIndividual", individual);
   }
 
-  addUser(user: User)
-  {
-    return this._http.post<User>(GlobalConfig.serverUrl + "addUser",
-      user);
-  }
+  // addUser(user: User)
+  // {
+  //   return this._http.post<User>(GlobalConfig.serverUrl + "addUser",
+  //     user);
+  // }
 
   updateCompany(company: Company)
   {
