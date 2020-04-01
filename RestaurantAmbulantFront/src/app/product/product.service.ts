@@ -18,4 +18,9 @@ export class ProductService {
   getProducts() : Observable<Product[]> {
     return this._http.get<Product[]>(GlobalConfig.productEndPoint + "all")
   }
+
+  addProduct(product: Product): Observable<Product>
+  {
+    return this._http.post<Product>(GlobalConfig.serverUrl+"addproduct/", product);
+  }
 }

@@ -3,6 +3,7 @@ import { UserHttpService } from '../user-http.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { Basket } from 'src/app/models/basket';
 
 @Component({
   selector: 'app-log-in',
@@ -46,7 +47,7 @@ export class LogInComponent implements OnInit {
               {
                 sessionStorage.setItem("user", JSON.stringify(this.user));
                 this.isLoggedIn = true;
-                this._router.navigate(['home']);
+                this._router.navigate(['products']);
               }
             }
           }
@@ -83,6 +84,7 @@ export class LogInComponent implements OnInit {
   }
   static disconnect()
   {
+    Basket.delete();
     sessionStorage.removeItem("user");
   }
   static getConnectedUser(): User

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
 
   constructor(private _userHttpService: UserHttpService,
-    private _router: Router)
+              private _router: Router)
   {
     this.userForm.controls['isCompany'].valueChanges.subscribe(
       (state: boolean) =>

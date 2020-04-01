@@ -165,10 +165,10 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");
 		Company c4 = new Company("company4", "123", "phone", "addess", "zipecode", "city", "name");
 
+		Individual i3 = new Individual("aa@aa.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
+		Individual i5 = new Individual("zz@zz.fr", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 		Individual i1 = new Individual("antoin@mail.com", "password", "0635845692", "Rue la République", "75011", "Paris", "Antoi", "Daniel", false,   LocalDate.now(), false);
-		Individual i3 = new Individual("email3", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 		Individual i4 = new Individual("eliot@mail.com", "password", "0624582695", "Boulevard La Borie", "75001", "Paris", "Elliot", "Aronson", false,   LocalDate.now(), true);
-		Individual i5 = new Individual("email5", "password", "phone", "address", "zipecode", "city", "latname", "fristname", true,   LocalDate.now(), true);
 
 
 		Command c1 = new Command(1, LocalDateTime.now(), LocalDateTime.now(), false, LocalDateTime.now(), false, "Boulevard La Borie", "75001", "Paris");
