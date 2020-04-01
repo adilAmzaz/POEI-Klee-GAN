@@ -6,6 +6,7 @@ export class GlobalConfig {
     public static getCommandsEndPoint : string = `${GlobalConfig.serverUrl}getcommands/`
     public static getCommandByIdEndPoint : string = `${GlobalConfig.serverUrl}getcommandbyid/`
     public static getCommandByEmailEndPoint : string = `${GlobalConfig.serverUrl}getcommandbyemail/`
-
     public static productEndPoint : string = `${GlobalConfig.serverUrl}products/`
+    public static addMeal : string = `${GlobalConfig.serverUrl}/modifymeal/`
+
 }

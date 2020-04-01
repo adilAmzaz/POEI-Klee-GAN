@@ -18,4 +18,10 @@ export class MealService {
   getMeals() : Observable<Meal[]> {
     return this._http.get<Meal[]>(GlobalConfig.serverUrl + "getmeals")
   }
+
+  addMeal(meal: Meal)
+  {
+    console.log(GlobalConfig.serverUrl + "addCompany");
+    return this._http.post<Meal>(GlobalConfig.addMeal + meal.mealId, meal);
+  }
 }

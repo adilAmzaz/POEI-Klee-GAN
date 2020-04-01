@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<section class="main-timeline-section">
+			    <div class="timeline-start"></div>
+			    <div class="conference-center-line"></div>
+			    <div class="conference-timeline-content">
+
+				    <div class="timeline-article timeline-article-top" *ngFor="let meal of meals.reverse() ">
+				        <div class="content-date">
+			          		<span>{{meal.beginHour | slice:0:5}}</span>
+				        </div>
+				        <div class="meta-date"></div>
+				        <div class="content-box">
+                            <p>{{meal.name}}</p>
+                            
+                        </div>
+                        <div class="content-dateFinish">
+                            <span>{{meal.endHour | slice:0:5}}</span>
+                      </div>
+                      <div class="meta-dateFinish"></div>
+				    </div>
+
+
+                     
+			   	</div>
+			   	<div class="timeline-end"></div>
+		  	</section>
+		</div>
+	</div>
+</div>

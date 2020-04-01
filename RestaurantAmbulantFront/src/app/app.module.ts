@@ -30,6 +30,8 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MealsManagementComponent } from './meal/meals-management/meals-management.component';
 import { MealsListComponent } from './meal/meals-list/meals-list.component';
+import {TimelineComponent} from 'src/app/timeline/timeline.component';
+import { ModifyHoursOfMealsComponent } from './modify-hours-of-meals/modify-hours-of-meals.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -52,7 +54,9 @@ registerLocaleData(localeFr, 'fr');
     UserProfileComponent,
     ProductsListComponent,
     MealsManagementComponent,
-    MealsListComponent
+    MealsListComponent,
+    TimelineComponent,
+    ModifyHoursOfMealsComponent
   ],
   imports: [
     BrowserModule,
