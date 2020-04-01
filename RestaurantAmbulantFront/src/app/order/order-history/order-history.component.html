@@ -1,13 +1,12 @@
 <br>
 <br>
 <br>
-<div  class="container" style="padding-top: 70px;">
-  <h1>Mes commandes </h1>
+<div>
+  <h3>Mes commandes </h3>
   <table class="table table-striped">
     <thead>
     <tr>
         <th>CommandId</th>
-        <th>UserId</th>
         <th>orderDate</th>
         <th>deliveryDate</th>
         <th>delivered</th>
@@ -21,7 +20,6 @@
     <tbody>
     <tr *ngFor="let item of listCommandsByEmail">
         <td>{{item.commandId}}</td>
-        <td>{{item.user.userId}}</td>
         <td>{{item.orderDate}}</td>
         <td>{{item.deliveryDate}}</td>
         <td>{{item.delivered}}</td>
@@ -34,36 +32,46 @@
     </tbody>
   </table>
 </div>
+<br>
+<br>
+<br>
 
-
-<div *ngIf="isAdmin()" class="container" style="padding-top: 70px;">
-    <h1>Liste de toutes les commandes</h1>
+<div *ngIf="isAdmin()"  >
+    <h3>Liste de toutes les commandes</h3>
     <table class="table table-striped" *ngIf="listCommands.length > 0">
       <thead>
         <tr >
           <th>CommandId</th>
           <th>UserId</th>
+          <th>UserEmail</th>
           <th>orderDate</th>
           <th>deliveryDate</th>
           <th>delivered</th>
           <th>deliveredDate</th>
           <th>homeDelivery</th>
-          <th>address</th>
-          <th>zipecode</th>
-          <th>city</th>
+          <th>address utilisateur</th>
+          <th>zipecode utilisateur</th>
+          <th>city utilisateur</th>
+          <th>address commande</th>
+          <th>zipecode commande</th>
+          <th>city commande</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of listCommands; let i = index; ">
             <th>{{item.commandId}}</th>
             <th>{{item.user.userId}}</th>
+            <th>{{item.user.email}}</th>
             <th>{{item.orderDate}}</th>
             <th>{{item.deliveryDate}}</th>
             <th>{{item.delivered}}</th>
             <th>{{item.deliveredDate}}</th>
             <th>{{item.homeDelivery}}</th>
+            <th>{{item.user.address}}</th>
+            <th>{{item.user.zipcode}}</th>
+            <th>{{item.user.city}}</th>
             <th>{{item.address}}</th>
-            <th>{{item.zipecode}}</th>
+            <th>{{item.zipcode}}</th>
             <th>{{item.city}}</th>
         </tr>
       </tbody>
