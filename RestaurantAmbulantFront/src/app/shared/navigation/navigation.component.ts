@@ -34,7 +34,6 @@ export class NavigationComponent implements OnInit {
   }
 
   createBasket() {
-    Basket.create(null)
-    this._orderService.createBasket()
+    this._orderService.createBasket(null)
   }
 }

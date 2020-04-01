@@ -8,6 +8,8 @@ import { Meal } from 'src/app/models/meal';
 import { NgbDateParserFormatter, NgbDateStruct, NgbDatepickerI18n, NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Basket } from 'src/app/models/basket';
 import { CommandLine } from 'src/app/models/command-line';
+import { OrderService } from 'src/app/order/order.service';
+import { LogInComponent } from 'src/app/user/log-in/log-in.component';
 
 const I18N_VALUES = {
   'fr': {
@@ -168,10 +170,14 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private _productService : ProductService,
     private _mealService : MealService,
-    private _ngbCalendar: NgbCalendar
+    private _ngbCalendar: NgbCalendar,
+    private _orderService: OrderService
   ) { }
 
   ngOnInit(): void {
+    if (!LogInComponent.isConnected()) {
+      Basket.delete()
+    }
     this.days.forEach(day => this.daysDisplay.set(day, true))
     this._mealService.getMeals().subscribe((response) => {
       this.meals = response
@@ -187,7 +193,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   createBasket(product : Product) {
-    Basket.create(product)
+    this._orderService.createBasket(product)
   }
 
   addBasket(product : Product) {
