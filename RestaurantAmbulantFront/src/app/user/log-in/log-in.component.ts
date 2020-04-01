@@ -37,16 +37,20 @@ export class LogInComponent implements OnInit {
     if (!this.loginForm.invalid)
     {
       this._userHttpService.getUserByEMail(this.loginForm.controls['email'].value)
-        .subscribe((response) => { this.user = response });
-      if (this.user != null)
-      {
-        if (this.user.password == this.loginForm.controls['password'].value)
-        {
-          sessionStorage.setItem("userId", this.user.userId.toString());
-          this.isLoggedIn = true;
-          this._router.navigate(['home']);
-        }
-      }
+        .toPromise().then((response) =>
+          {
+            this.user = response;
+            if (this.user != null)
+            {
+              if (this.user.password == this.loginForm.controls['password'].value)
+              {
+                sessionStorage.setItem("user", JSON.stringify(this.user));
+                this.isLoggedIn = true;
+                this._router.navigate(['home']);
+              }
+            }
+          }
+        )
       
     }
   }
@@ -72,14 +76,18 @@ export class LogInComponent implements OnInit {
 
   static isConnected(): boolean
   {
-    if (sessionStorage.getItem("userId") != null)
+    if (sessionStorage.getItem("user") != null)
       return true;
     else
       return false;
   }
   static disconnect()
   {
-    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("user");
+  }
+  static getConnectedUser(): User
+  {
+    return <User>JSON.parse(sessionStorage.getItem("user"))
   }
 
 }

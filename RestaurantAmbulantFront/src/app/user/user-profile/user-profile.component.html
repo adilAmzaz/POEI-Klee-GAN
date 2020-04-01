@@ -1,1 +1,162 @@
-<p>user-profile works!</p>
+<div class="mx-auto container-fluid" style="max-width: 800px; padding-top: 80px;
+    padding-bottom: 50px; background-color: #efefea;">
+    <form class="row" [formGroup]="idForm" (ngSubmit)="updateIdentifiers()">
+        <div class="col-1"></div>
+        <table class="col-10">
+            <tr>
+                <td colspan="2"><h4>Identifiants : </h4></td>
+            </tr>
+            <tr>
+                <td><label>Adresse E-Mail : </label></td>
+                <td>
+                    <input type="email" class="form-control" id="email"
+                        formControlName="email" placeholder="john.doe@random.rng" required/>
+                </td>
+                <td *ngIf="!idForm.controls['email'].valid">{{getIdErrorMessage("email")}}</td>
+            </tr>
+            <tr>
+                <td><label>Changer de Mot de Passe : </label></td>
+                <td>
+                    <input type="password" class="form-control" id="password"
+                        formControlName="newPassword" placeholder="********" required/>
+                </td>
+                <td *ngIf="!idForm.controls['newPassword'].valid">{{getIdErrorMessage("password")}}</td>
+            </tr>
+            <tr>
+                <td><label>Confirmer votre Mot de Passe actuel : </label></td>
+                <td>
+                    <input type="password" class="form-control" id="password"
+                        formControlName="password" placeholder="********" required/>
+                </td>
+                <td *ngIf="!idForm.controls['password'].valid">{{getIdErrorMessage("password")}}</td>
+            </tr>
+            <tr><br/></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Appliquer modifications</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="col-1"></div>
+    </form>
+
+    <tr><br/></tr>
+
+    <form class="row" [formGroup]="infoForm" (ngSubmit)="updateInfo()">
+        <div class="col-1"></div>
+        <table class="col-10">
+            <tr>
+                <td colspan="2"><h4>Informations : </h4></td>
+            </tr>
+            <tr *ngIf="isCompany()">
+                <td><label>Nom de l'Entreprise : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="companyName"
+                        formControlName="companyName" placeholder="Nom Entreprise" />
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Prénom : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="firstName"
+                        formControlName="firstName" placeholder="Prénom" />
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Nom : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="lastName"
+                        formControlName="lastName" placeholder="Nom" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Telephone : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="phone"
+                        formControlName="phone" placeholder="0600000000" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Adresse : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="address"
+                            formControlName="address" placeholder="6, Rue Rougemont" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Code Postal : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="zipCode"
+                            formControlName="zipCode" placeholder="00000" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Ville : </label></td>
+                <td>
+                    <div formGroupName="addressForm">
+                        <input type="text" class="form-control" id="city"
+                            formControlName="city" placeholder="Plessis-Robinson" />
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td><label>Date de Naissance : </label></td>
+                <td>
+                    <input type="date" class="form-control" id="birthDate"
+                        formControlName="birthDate" required/>
+                </td>
+            </tr>
+            <tr *ngIf="!isCompany()">
+                <td colspan="2">
+                    <div class="text-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="female" [value]="true"
+                                formControlName="isFemale" name="isFemale" checked>
+                            <label class="form-check-label" for="female">Femme</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="male" [value]="false"
+                                formControlName="isFemale" name="isFemale">
+                            <label class="form-check-label" for="male">Homme</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="!hasAdminRights()">
+                <td colspan="2">
+                    <div class="text-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="userRights" [value]="true"
+                                formControlName="adminRights" name="adminRights" checked>
+                            <label class="form-check-label" for="female">Utilisateur</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="adminRights" [value]="false"
+                                formControlName="adminRights" name="adminRights">
+                            <label class="form-check-label" for="male">Administrateur</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr><br/></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Appliquer modifications</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="col-1"></div>
+    </form>
+</div>

@@ -3,13 +3,13 @@ import { FormGroup, FormControl, Validators } from"@angular/forms";
 
 export class AddressForm extends FormGroup
 {
-    constructor()
+    constructor(address: String, zipCode: String, city: String)
     {
         super(
             {
-                address: new FormControl(),
-                zipCode: new FormControl(),
-                city: new FormControl()
+                address: new FormControl(address),
+                zipCode: new FormControl(zipCode),
+                city: new FormControl(city)
             });
     }
 }
