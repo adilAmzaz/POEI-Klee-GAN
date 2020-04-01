@@ -47,7 +47,7 @@ export class LogInComponent implements OnInit {
               {
                 sessionStorage.setItem("user", JSON.stringify(this.user));
                 this.isLoggedIn = true;
-                this._router.navigate(['home']);
+                this._router.navigate(['products']);
               }
             }
           }
