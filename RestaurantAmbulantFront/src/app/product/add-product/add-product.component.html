@@ -1,1 +1,71 @@
-<p>add-product works!</p>
+<div class="mx-auto container-fluid" style="max-width: 800px; padding-top: 80px;
+            padding-bottom: 50px; background-color: #efefea;">
+    <form class="row" [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="col-1"></div>
+        <table class="col-10">
+            <tr>
+                <td><label>Nom du plat : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="label"
+                        formControlName="label" placeholder="Chocolatine" required/>
+                </td>
+                <td *ngIf="!productForm.controls['label'].valid" class="nobreak">{{getErrorMessage("label")}}</td>
+            </tr>
+            <tr>
+                <td><label>Adresse de l'image : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="image"
+                        formControlName="image" placeholder="URL de l'image" />
+                </td>
+                <td *ngIf="!productForm.controls['image'].valid" class="nobreak">{{getErrorMessage("image")}}</td>
+            </tr>
+            <tr>
+                <td><label>Composition : </label></td>
+                <td>
+                    <input type="text" class="form-control" id="composition"
+                        formControlName="composition" placeholder="Tomate, salade, etc." />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Prix : </label></td>
+                <td>
+                    <input type="number" class="form-control" id="price"
+                        formControlName="price" placeholder="- €" required />
+                </td>
+                <td *ngIf="!productForm.controls['price'].valid" class="nobreak">{{getErrorMessage("price")}}</td>
+            </tr>
+            <tr>
+                <td><label>Stock : </label></td>
+                <td>
+                    <input type="number" class="form-control" id="stock"
+                        formControlName="stock" />
+                </td>
+            </tr>
+            <tr><td colspan="2" class="justify-content-center container-fluid">
+                <div class="row">
+                    <div *ngFor="let meal of meals" class="inline">
+                        <a class="badge {{meal.name}}  " (click)="toggleMealDisplay(meal.mealId)" 
+                            [ngClass]="{'disabled': !mealsDisplay.get(meal.mealId)}">{{meal.name}}</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngFor="let day of days" class="inline">
+                        <a class="badge {{Days[day]}}" (click)="toggleDayDisplay(day)" 
+                            [ngClass]="{'disabled': !daysDisplay.get(day)}">{{Days[day]}}</a>
+                    </div>
+                </div>
+            </td></tr>
+            
+            <tr><br/></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Ajouter plat</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="col-1"></div>
+    </form>
+</div>

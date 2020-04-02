@@ -31,8 +31,14 @@
         <li *ngIf="isConnected()" class="nav-item">
             <a class="nav-link" [routerLink]="['/commands']">Historique des commandes</a>
         </li>
-        <li *ngIf="isConnected()" class="nav-item">
-            <a class="nav-link" [routerLink]="['/ModifierHeuresRepas']">Modifier Les horaires des repas</a>
+        <li>
+            <div *ngIf="isAdmin()" ngbDropdown class="d-inline-block">
+                <button class="btn text-light" id="dropdownBasic1" ngbDropdownToggle>Outils Admin</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem style="z-index: 100;" (click)="routeMealTimeChange()">Horaires des repas</button>
+                    <button ngbDropdownItem style="z-index: 100;" (click)="routeAddProduct()">Ajouter un produit</button>
+                </div>
+            </div>
         </li>
         <li *ngIf="isConnected()" class="nav-item">
             <button class="btn btn-danger" (click)="disconnect()">Déconnexion</button>

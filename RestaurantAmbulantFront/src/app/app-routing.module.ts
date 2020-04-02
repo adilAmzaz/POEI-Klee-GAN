@@ -10,6 +10,7 @@ import { OrderHistoryComponent } from './order/order-history/order-history.compo
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ProductsListComponent } from './product/products-list/products-list.component';
 import { ModifyHoursOfMealsComponent } from './modify-hours-of-meals/modify-hours-of-meals.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'actualities/actuality/:id', component : ActualityComponent},
   {path: 'commands', component: OrderHistoryComponent},
   {path: 'products', component : ProductsListComponent},
+  {path: 'products/add', component : AddProductComponent},
   {path: 'ModifierHeuresRepas', component : ModifyHoursOfMealsComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

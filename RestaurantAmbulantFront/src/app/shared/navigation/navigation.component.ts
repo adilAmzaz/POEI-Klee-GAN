@@ -21,15 +21,26 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayAdminTools: boolean = false;
+
   isConnected(): boolean
   {
     console.log("admin",this.isAdmin)
     return LogInComponent.isConnected();
   }
+  isAdmin(): boolean
+  {
+    return LogInComponent.isAdmin();
+  }
   disconnect()
   {
     LogInComponent.disconnect();
     this._router.navigate(['home']);
+  }
+
+  toggleAdminTools()
+  {
+    this.displayAdminTools = !this.displayAdminTools;
   }
 
   hasBasket() {
@@ -57,5 +68,16 @@ export class NavigationComponent implements OnInit {
     }
       
       
+  }
+
+  routeMealTimeChange()
+  {
+    this._router.navigate(['ModifierHeuresRepas']);
+
+  }
+  routeAddProduct()
+  {
+    this._router.navigate(['products/add/']);
+
   }
 }

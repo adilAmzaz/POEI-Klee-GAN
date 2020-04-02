@@ -1,0 +1,41 @@
+.badge {
+    outline: none;
+    color: white;
+    margin: 1px;
+    font-size: 14px;
+}
+
+.badge:hover {
+    cursor: pointer;
+    color:#eee;
+}
+
+.meals, .days {
+    margin-bottom: 5px;
+}
+
+.Petit-déjeuner, .Goûter {
+    background-color: rgb(255, 166, 0);
+}
+
+.Déjeuner, .Dîner {
+    background-color: tomato;
+}
+
+.Lundi, .Mardi, .Mercredi, .Jeudi, .Vendredi {
+    background-color: springgreen;
+}
+
+.Samedi, .Dimanche {
+    background-color: teal;
+}
+
+
+.disabled {
+    background-color: #888;
+}
+
+.nobreak
+{
+    white-space: nowrap;
+}

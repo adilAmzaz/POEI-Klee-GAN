@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserHttpService } from '../user-http.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { User, Individual } from 'src/app/models/user';
 import { Router } from '@angular/router';
 import { Basket } from 'src/app/models/basket';
 
@@ -90,6 +90,15 @@ export class LogInComponent implements OnInit {
   static getConnectedUser(): User
   {
     return <User>JSON.parse(sessionStorage.getItem("user"))
+  }
+  static isAdmin()
+  {
+    if (!this.isConnected())
+      return false;
+    let user = this.getConnectedUser();
+    if ('adminRights' in user && (<Individual>user).adminRights)
+      return true;
+    return false;
   }
 
 }
