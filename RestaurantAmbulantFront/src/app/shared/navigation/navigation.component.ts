@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
 
   isConnected(): boolean
   {
-    console.log("admin",this.isAdmin)
+    //console.log("admin",this.isAdmin)
     return LogInComponent.isConnected();
   }
   isAdmin(): boolean
@@ -51,7 +51,7 @@ export class NavigationComponent implements OnInit {
     this._orderService.createBasket(null)
   }
 
-  isAdmin(): boolean
+  /*isAdmin(): boolean
   {
     if (LogInComponent.getConnectedUser()!= null)
       {
@@ -68,7 +68,7 @@ export class NavigationComponent implements OnInit {
     }
       
       
-  }
+  }*/
 
   routeMealTimeChange()
   {

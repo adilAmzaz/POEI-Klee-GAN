@@ -5,7 +5,7 @@ import { ProductService } from '../product.service';
 import { Day } from 'src/app/models/day.enum';
 import { MealService } from 'src/app/meal/meal.service';
 import { Meal } from 'src/app/models/meal';
-import { NgbDateParserFormatter, NgbDateStruct, NgbDatepickerI18n, NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbDateStruct, NgbDatepickerI18n, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { Basket } from 'src/app/models/basket';
 import { CommandLine } from 'src/app/models/command-line';
 import { OrderService } from 'src/app/order/order.service';

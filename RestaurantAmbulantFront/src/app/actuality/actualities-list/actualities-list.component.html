@@ -25,8 +25,8 @@
                         <a [routerLink]="['/actualities/actuality',actuality.actualityId]" class="stretched-link">{{actuality.title}}</a>
                     </h4>
                     <p style="font-size: 18px;">
-                        <span class="badge badge-primary">{{actuality.publicationDate | date:"dd/MM/yyyy"}}</span>
-                        <span class="badge badge-success ml-1">{{actuality.publicationDate | date:"hh:mm"}}</span>
+                        <span class="badge badge-primary">{{actuality.publicationDate | date:"EEEE d MMMM yyyy":'+0200':'fr'}}</span>
+                        <span class="badge badge-success ml-1">{{actuality.publicationDate | date:"HH:mm"}}</span>
                     </p>
                     <p class="card-text">{{actuality.catchParagraph}}</p>
                 </div>

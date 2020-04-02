@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import poeiklee.RestaurantAmbulantBack.Models.Actuality;
 import poeiklee.RestaurantAmbulantBack.Models.Product;
 import poeiklee.RestaurantAmbulantBack.Repositories.ProductRepository;
 
@@ -49,6 +50,22 @@ public class ProductControllerRest {
 	{
 		List<Product> products = productRepo.findAll();
 		return products;
+	}
+	
+	@GetMapping("/products/{from}/{to}")
+	public List<Product> findBetween(@PathVariable("from") int from, @PathVariable("to") int to) {
+		List<Product> productsList = productRepo.findAll();
+		productsList.sort(null);
+		
+		return productsList.subList(Math.min(from, productsList.size()), Math.min(to, productsList.size()));
+	}
+	
+	@GetMapping("/products/{mealId}/{from}/{to}")
+	public List<Product> findForBetween(@PathVariable("mealId") int mealId, @PathVariable("from") int from, @PathVariable("to") int to) {
+		List<Product> productsList = productRepo.findAllByMeals_mealId(mealId);
+		productsList.sort(null);
+		
+		return productsList.subList(Math.min(from, productsList.size()), Math.min(to, productsList.size()));
 	}
 	
 	@GetMapping("/getproductbyid/{id}")

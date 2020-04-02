@@ -157,9 +157,115 @@ public class RestaurantAmbulantBackApplication implements CommandLineRunner {
 						+ "approfondie sur cette question</i> », annonce Sofie Merckx, médecin et députée du PTB.",
 				LocalDateTime.of(2020, 3, 25, 22, 27));
 		actualityRepository.save(actuality2);
+		Actuality actuality3 = new Actuality("Nous arrivons au Plessis-Robinson !", 
+				"Gabriel Mayoud", 
+				"Nous nous installons dans cette belle ville pour une durée indéterminée, "
+						+ "retrouvez-nous sur la place devant le Grand Hôtel pour déguster vos plats favoris !", 
+				"images/actuality/plessis.jpg", 
+				"Comme nous vous l'expliquions récemment, toute l'équipe a suivi ces deux derniers mois une formation de développeur, et nous nous apprêtons à intégrer "
+						+ "les équipes du groupe Klee, au... Plessis-Robinson ! Voilà le pourquoi de notre arrivée sur les côteaux boisés de la vallée de la Bièvre."
+						+ "<br><br>Au programme de la formation que nous avons suivie, du Java, du Spring, du SQL, et beaucoup de web ! Comme vous l'appréciez j'espère "
+						+ "en naviguant sur les pages de notre site programmées avec autant d'amour que nous confectionnons vos petits plats."
+						+ "<br><br>Rendez-vous devant le Grand Hôtel donc, et au plaisir de vous voir !", 
+				LocalDateTime.of(2020, 4, 1, 17, 0));
+		actualityRepository.save(actuality3);
+		Actuality actuality4 = new Actuality("Des nouvelles fraîches de votre restaurant ambulant favori", 
+				"Adil Amzaz", 
+				"Trois jours sans vous donner de nouvelles... Remédions immédiatement à cela !", 
+				"images/actuality/restaurantambulant.jpg", 
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus metus. Proin tincidunt ligula neque, a mattis dui ultricies non. "
+						+ "Praesent imperdiet feugiat ligula eu semper. Curabitur sed fermentum dolor. Sed vel nisl sit amet tellus ullamcorper ultricies. In vel "
+						+ "molestie mauris. Integer ut pretium velit, vitae tempus tortor. Morbi tempor est ac accumsan varius. In convallis ultrices nunc ac "
+						+ "venenatis. Maecenas urna mi, condimentum vel maximus vel, malesuada ac dolor. Nulla leo magna, luctus eu suscipit eu, interdum vitae "
+						+ "nibh. Mauris blandit, mauris ut vulputate pretium, felis elit semper erat, egestas dapibus orci lorem imperdiet urna. Quisque in finibus "
+						+ "augue. Phasellus rutrum erat et augue condimentum, vehicula pretium nunc rutrum. Aenean eget augue sagittis, venenatis dolor eget, "
+						+ "aliquam enim.<br><br>" 
+						+ "Proin eget tincidunt nunc. Vestibulum euismod pulvinar aliquam. Integer a mauris sed ante iaculis gravida. Nunc tellus sapien, facilisis "
+						+ "ullamcorper risus nec, imperdiet varius sapien. Maecenas sit amet odio scelerisque erat euismod sollicitudin. Etiam varius tortor a arcu "
+						+ "tempor tempor. Duis ac faucibus lectus. Suspendisse turpis magna, interdum sit amet ullamcorper varius, vestibulum at nunc. Nulla auctor "
+						+ "vehicula justo, vitae maximus diam tristique ac. Sed quis semper justo, ac consequat massa. Sed eget ipsum in nisi sodales blandit.<br><br>"
+						+ "Vestibulum ac ante volutpat, iaculis enim sed, tincidunt sapien. Aenean tempor ac ipsum nec laoreet. Curabitur est libero, convallis sed "
+						+ "ultrices sed, egestas eget nisi. Sed vitae ante eu leo porta aliquet ut a metus. Morbi consectetur blandit nulla sed tempus. Quisque sed "
+						+ "massa eros. In tincidunt congue consequat. Nullam vel nisi ac lacus blandit gravida. Pellentesque convallis sapien in dolor eleifend, at "
+						+ "lobortis nulla lobortis. Donec vel justo tincidunt lacus eleifend lacinia non ullamcorper est. Vestibulum nec augue vestibulum, posuere "
+						+ "arcu ut, pretium nisl. Mauris leo velit, sodales id diam sit amet, ornare lobortis nulla. Pellentesque nisl urna, porta a mattis sed, "
+						+ "scelerisque nec lacus. Suspendisse tristique tellus nisl, at ultrices elit fringilla eget.<br><br>" 
+						+ "In quis volutpat risus. Etiam ut gravida ipsum, ac faucibus ex. Nulla facilisi. Aliquam commodo purus semper lorem suscipit, quis "
+						+ "ultricies massa aliquet. Cras feugiat mattis ornare. Curabitur ut aliquam nulla, eget dignissim ante. Fusce nibh nunc, accumsan placerat "
+						+ "mauris ac, molestie feugiat lorem. Vestibulum pharetra, est nec ultrices auctor, leo tellus volutpat orci, id dignissim sapien felis vel "
+						+ "metus. Aliquam ut accumsan massa. Nulla sit amet felis vitae ligula gravida dictum eget ut mauris. Maecenas pretium luctus placerat. "
+						+ "Nullam sit amet porttitor ipsum, sit amet mollis metus. Sed ut sollicitudin nibh, vel porttitor dolor. Nam laoreet non nunc ac porta. "
+						+ "Vestibulum placerat sollicitudin turpis.<br><br>" 
+						+ "Donec et porttitor quam. Sed id feugiat ipsum, viverra ornare nibh. Vivamus ac tellus enim. Pellentesque eget maximus nisi. Praesent "
+						+ "tortor ipsum, fringilla a libero a, fermentum varius magna. Donec tincidunt eleifend diam, eu consectetur velit tempor ut. Donec accumsan, "
+						+ "mauris a tincidunt lobortis, ligula sapien tincidunt arcu, suscipit interdum magna ligula et dui. Nullam quis fringilla nisi.", 
+				LocalDateTime.of(2020, 3, 28, 7, 27));
+		actualityRepository.save(actuality4);
+		Actuality actuality5 = new Actuality("Nos résultats pour 2019 sont publiés !", 
+				"Noé Voivy", 
+				"Proin eget tincidunt nunc. Vestibulum euismod pulvinar aliquam. Integer a mauris sed ante iaculis gravida. Nunc tellus sapien, facilisis "
+						+ "ullamcorper risus nec, imperdiet varius sapien.", 
+				"images/actuality/resultats.jpg", 
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus metus. Proin tincidunt ligula neque, a mattis dui ultricies non. "
+						+ "Praesent imperdiet feugiat ligula eu semper. Curabitur sed fermentum dolor. Sed vel nisl sit amet tellus ullamcorper ultricies. In vel "
+						+ "molestie mauris. Integer ut pretium velit, vitae tempus tortor. Morbi tempor est ac accumsan varius. In convallis ultrices nunc ac "
+						+ "venenatis. Maecenas urna mi, condimentum vel maximus vel, malesuada ac dolor. Nulla leo magna, luctus eu suscipit eu, interdum vitae "
+						+ "nibh. Mauris blandit, mauris ut vulputate pretium, felis elit semper erat, egestas dapibus orci lorem imperdiet urna. Quisque in finibus "
+						+ "augue. Phasellus rutrum erat et augue condimentum, vehicula pretium nunc rutrum. Aenean eget augue sagittis, venenatis dolor eget, "
+						+ "aliquam enim.<br><br>" 
+						+ "Proin eget tincidunt nunc. Vestibulum euismod pulvinar aliquam. Integer a mauris sed ante iaculis gravida. Nunc tellus sapien, facilisis "
+						+ "ullamcorper risus nec, imperdiet varius sapien. Maecenas sit amet odio scelerisque erat euismod sollicitudin. Etiam varius tortor a arcu "
+						+ "tempor tempor. Duis ac faucibus lectus. Suspendisse turpis magna, interdum sit amet ullamcorper varius, vestibulum at nunc. Nulla auctor "
+						+ "vehicula justo, vitae maximus diam tristique ac. Sed quis semper justo, ac consequat massa. Sed eget ipsum in nisi sodales blandit.<br><br>"
+						+ "Vestibulum ac ante volutpat, iaculis enim sed, tincidunt sapien. Aenean tempor ac ipsum nec laoreet. Curabitur est libero, convallis sed "
+						+ "ultrices sed, egestas eget nisi. Sed vitae ante eu leo porta aliquet ut a metus. Morbi consectetur blandit nulla sed tempus. Quisque sed "
+						+ "massa eros. In tincidunt congue consequat. Nullam vel nisi ac lacus blandit gravida. Pellentesque convallis sapien in dolor eleifend, at "
+						+ "lobortis nulla lobortis. Donec vel justo tincidunt lacus eleifend lacinia non ullamcorper est. Vestibulum nec augue vestibulum, posuere "
+						+ "arcu ut, pretium nisl. Mauris leo velit, sodales id diam sit amet, ornare lobortis nulla. Pellentesque nisl urna, porta a mattis sed, "
+						+ "scelerisque nec lacus. Suspendisse tristique tellus nisl, at ultrices elit fringilla eget.<br><br>" 
+						+ "In quis volutpat risus. Etiam ut gravida ipsum, ac faucibus ex. Nulla facilisi. Aliquam commodo purus semper lorem suscipit, quis "
+						+ "ultricies massa aliquet. Cras feugiat mattis ornare. Curabitur ut aliquam nulla, eget dignissim ante. Fusce nibh nunc, accumsan placerat "
+						+ "mauris ac, molestie feugiat lorem. Vestibulum pharetra, est nec ultrices auctor, leo tellus volutpat orci, id dignissim sapien felis vel "
+						+ "metus. Aliquam ut accumsan massa. Nulla sit amet felis vitae ligula gravida dictum eget ut mauris. Maecenas pretium luctus placerat. "
+						+ "Nullam sit amet porttitor ipsum, sit amet mollis metus. Sed ut sollicitudin nibh, vel porttitor dolor. Nam laoreet non nunc ac porta. "
+						+ "Vestibulum placerat sollicitudin turpis.<br><br>" 
+						+ "Donec et porttitor quam. Sed id feugiat ipsum, viverra ornare nibh. Vivamus ac tellus enim. Pellentesque eget maximus nisi. Praesent "
+						+ "tortor ipsum, fringilla a libero a, fermentum varius magna. Donec tincidunt eleifend diam, eu consectetur velit tempor ut. Donec accumsan, "
+						+ "mauris a tincidunt lobortis, ligula sapien tincidunt arcu, suscipit interdum magna ligula et dui. Nullam quis fringilla nisi.", 
+				LocalDateTime.of(2020, 3, 26, 21, 51));
+		actualityRepository.save(actuality5);
 		for (int i = 0; i < 100; i++)
-			actualityRepository.save(new Actuality("Test n°" + (i + 1), "M. Test", "Ceci est le test n°" + (i + 1) + ".", "images/actuality/test.jpg", 
-					"Si nous vous testions le test, que testeriez-vous ? Un sacré test en perspective...", LocalDateTime.of(2019-i, 9, 1, 12, 36)));
+			actualityRepository.save(new Actuality("Test n°" + (i + 1), 
+					"M. Test", 
+					"Ceci est le test n°" + (i + 1) + ".", 
+					"images/actuality/test.jpg", 
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus metus. Proin tincidunt ligula neque, a mattis dui ultricies non. "
+							+ "Praesent imperdiet feugiat ligula eu semper. Curabitur sed fermentum dolor. Sed vel nisl sit amet tellus ullamcorper ultricies. In vel "
+							+ "molestie mauris. Integer ut pretium velit, vitae tempus tortor. Morbi tempor est ac accumsan varius. In convallis ultrices nunc ac "
+							+ "venenatis. Maecenas urna mi, condimentum vel maximus vel, malesuada ac dolor. Nulla leo magna, luctus eu suscipit eu, interdum vitae "
+							+ "nibh. Mauris blandit, mauris ut vulputate pretium, felis elit semper erat, egestas dapibus orci lorem imperdiet urna. Quisque in finibus "
+							+ "augue. Phasellus rutrum erat et augue condimentum, vehicula pretium nunc rutrum. Aenean eget augue sagittis, venenatis dolor eget, "
+							+ "aliquam enim.<br><br>" 
+							+ "Proin eget tincidunt nunc. Vestibulum euismod pulvinar aliquam. Integer a mauris sed ante iaculis gravida. Nunc tellus sapien, facilisis "
+							+ "ullamcorper risus nec, imperdiet varius sapien. Maecenas sit amet odio scelerisque erat euismod sollicitudin. Etiam varius tortor a arcu "
+							+ "tempor tempor. Duis ac faucibus lectus. Suspendisse turpis magna, interdum sit amet ullamcorper varius, vestibulum at nunc. Nulla auctor "
+							+ "vehicula justo, vitae maximus diam tristique ac. Sed quis semper justo, ac consequat massa. Sed eget ipsum in nisi sodales blandit.<br><br>"
+							+ "Vestibulum ac ante volutpat, iaculis enim sed, tincidunt sapien. Aenean tempor ac ipsum nec laoreet. Curabitur est libero, convallis sed "
+							+ "ultrices sed, egestas eget nisi. Sed vitae ante eu leo porta aliquet ut a metus. Morbi consectetur blandit nulla sed tempus. Quisque sed "
+							+ "massa eros. In tincidunt congue consequat. Nullam vel nisi ac lacus blandit gravida. Pellentesque convallis sapien in dolor eleifend, at "
+							+ "lobortis nulla lobortis. Donec vel justo tincidunt lacus eleifend lacinia non ullamcorper est. Vestibulum nec augue vestibulum, posuere "
+							+ "arcu ut, pretium nisl. Mauris leo velit, sodales id diam sit amet, ornare lobortis nulla. Pellentesque nisl urna, porta a mattis sed, "
+							+ "scelerisque nec lacus. Suspendisse tristique tellus nisl, at ultrices elit fringilla eget.<br><br>" 
+							+ "In quis volutpat risus. Etiam ut gravida ipsum, ac faucibus ex. Nulla facilisi. Aliquam commodo purus semper lorem suscipit, quis "
+							+ "ultricies massa aliquet. Cras feugiat mattis ornare. Curabitur ut aliquam nulla, eget dignissim ante. Fusce nibh nunc, accumsan placerat "
+							+ "mauris ac, molestie feugiat lorem. Vestibulum pharetra, est nec ultrices auctor, leo tellus volutpat orci, id dignissim sapien felis vel "
+							+ "metus. Aliquam ut accumsan massa. Nulla sit amet felis vitae ligula gravida dictum eget ut mauris. Maecenas pretium luctus placerat. "
+							+ "Nullam sit amet porttitor ipsum, sit amet mollis metus. Sed ut sollicitudin nibh, vel porttitor dolor. Nam laoreet non nunc ac porta. "
+							+ "Vestibulum placerat sollicitudin turpis.<br><br>" 
+							+ "Donec et porttitor quam. Sed id feugiat ipsum, viverra ornare nibh. Vivamus ac tellus enim. Pellentesque eget maximus nisi. Praesent "
+							+ "tortor ipsum, fringilla a libero a, fermentum varius magna. Donec tincidunt eleifend diam, eu consectetur velit tempor ut. Donec accumsan, "
+							+ "mauris a tincidunt lobortis, ligula sapien tincidunt arcu, suscipit interdum magna ligula et dui. Nullam quis fringilla nisi.", 
+					LocalDateTime.of(2019-i, 9, 1, 12, 36)));
 		Company c = new Company("company", "123", "phone", "addess", "zipecode", "city", "name");
 		Company c2 = new Company("company2", "123", "phone", "addess", "zipecode", "city", "name");
 		Company c3 = new Company("company3", "123", "phone", "addess", "zipecode", "city", "name");

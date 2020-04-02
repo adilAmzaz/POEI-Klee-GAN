@@ -1,5 +1,40 @@
 <div style="padding-top: 80px;">
-    <app-actualities-slider [width]="'500px'" [height]="'333px'"></app-actualities-slider>
+    <div class="row">
+        <div class="col">
+            <div class="slider-container shadow mr-auto">
+                <div class="slider-title">
+                    Nos dernières actualités
+                </div>
+                <div class="slider">
+                    <app-actualities-slider [width]="'400px'" [height]="'300px'"></app-actualities-slider>
+                </div>
+                <div class="slider-link">
+                    <a [routerLink]="['/actualities']">Toutes les actualités</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="mx-auto" style="width: 250px;">
+                <img src="../../../assets/images/logo.png" width="250px">
+            </div>
+            <div class="glow">
+                Le Restaurant Ambulant
+            </div>
+        </div>
+        <div class="col">
+            <div class="slider-container shadow ml-auto">
+                <div class="slider-title">
+                    Nos produits plébiscités
+                </div>
+                <div class="slider">
+                    <app-products-slider [width]="'400px'" [height]="'300px'"></app-products-slider>
+                </div>
+                <div class="slider-link">
+                    <a [routerLink]="['/products']">Tous les produits</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <app-timeline></app-timeline>
 </div>
         

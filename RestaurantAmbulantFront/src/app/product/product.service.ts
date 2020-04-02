@@ -60,4 +60,8 @@ export class ProductService {
     if (day == Day.SUNDAY)
       return "SUNDAY";
   }
+
+  getProductsBetween(first: number, last: number) : Observable<Product[]> {
+    return this._http.get<Product[]>(GlobalConfig.productEndPoint + first + "/" + last)
+  }
 }

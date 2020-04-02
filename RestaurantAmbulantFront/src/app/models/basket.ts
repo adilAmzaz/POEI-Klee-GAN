@@ -30,6 +30,10 @@ export class Basket {
     }
 
     public static add(product : Product) {
+        if (!this.hasBasket) {
+            Basket.create(product)
+            return
+        }
         let alreadyInBasket : boolean = false
         Basket.commandLines.forEach(commandLine => {
             if (commandLine.product == product) {
