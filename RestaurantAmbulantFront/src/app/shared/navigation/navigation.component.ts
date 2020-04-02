@@ -23,6 +23,10 @@ export class NavigationComponent implements OnInit {
   {
     return LogInComponent.isConnected();
   }
+  isAdmin(): boolean
+  {
+    return LogInComponent.isAdmin();
+  }
   disconnect()
   {
     LogInComponent.disconnect();
