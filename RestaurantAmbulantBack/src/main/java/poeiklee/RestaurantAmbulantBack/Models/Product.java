@@ -11,7 +11,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int Id;
+	private int productId;
 	private String label;
 	private String imageRelativePath;
 	private String composition;
@@ -127,13 +127,13 @@ public class Product {
 	}
 
 
-	public int getId() {
-		return Id;
+	public int getProductId() {
+		return productId;
 	}
 
 
-	public void setId(int id) {
-		Id = id;
+	public void setProductId(int id) {
+		productId = id;
 	}
 
 
@@ -210,7 +210,7 @@ public class Product {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Product [getId()=");
-		builder.append(getId());
+		builder.append(getProductId());
 		builder.append(", getLabel()=");
 		builder.append(getLabel());
 		builder.append(", getImageRelativePath()=");

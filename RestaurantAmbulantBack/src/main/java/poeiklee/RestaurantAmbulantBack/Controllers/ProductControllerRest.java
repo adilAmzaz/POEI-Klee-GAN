@@ -86,7 +86,7 @@ public class ProductControllerRest {
 			product=  productRepo.findById(id);
 			if(!product.isPresent())
 				return ResponseEntity.notFound().build();
-			newProduct.setId(id);
+			newProduct.setProductId(id);
 			productRepo.save(newProduct);
 			return new ResponseEntity<>("new product added successfully : "+newProduct,HttpStatus.OK);
 		}
