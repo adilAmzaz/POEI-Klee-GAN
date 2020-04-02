@@ -96,7 +96,6 @@ export class LogInComponent implements OnInit {
     if (!this.isConnected())
       return false;
     let user = this.getConnectedUser();
-    console.log(user)
     if ('adminRights' in user && (<Individual>user).adminRights)
       return true;
     return false;

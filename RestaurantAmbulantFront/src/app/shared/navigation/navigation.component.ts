@@ -19,6 +19,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayAdminTools: boolean = false;
+
   isConnected(): boolean
   {
     return LogInComponent.isConnected();
@@ -33,6 +35,11 @@ export class NavigationComponent implements OnInit {
     this._router.navigate(['home']);
   }
 
+  toggleAdminTools()
+  {
+    this.displayAdminTools = !this.displayAdminTools;
+  }
+
   hasBasket() {
     return Basket.hasBasket
   }
@@ -40,5 +47,16 @@ export class NavigationComponent implements OnInit {
   createBasket() {
     Basket.create()
     this._orderService.createBasket()
+  }
+
+  routeMealTimeChange()
+  {
+    this._router.navigate(['ModifierHeuresRepas']);
+
+  }
+  routeAddProduct()
+  {
+    this._router.navigate(['products/add/']);
+
   }
 }

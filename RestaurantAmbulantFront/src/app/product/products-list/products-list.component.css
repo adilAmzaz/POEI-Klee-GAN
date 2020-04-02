@@ -116,6 +116,7 @@
 .navbar {
     margin-top: 60px;
     height: 30px;
+    z-index: 50;
 }
 
 .catalogue {
