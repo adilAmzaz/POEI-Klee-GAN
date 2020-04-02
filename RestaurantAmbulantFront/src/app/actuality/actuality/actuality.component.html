@@ -7,7 +7,7 @@
         </ul>
         <div class="text-center col-sm-3 mx-0 px-0" style="font-size: 22px;">
             <span class="badge badge-primary">{{actuality.publicationDate | date:"dd/MM/yyyy"}}</span>
-            <span class="badge badge-success ml-1">{{actuality.publicationDate | date:"hh:mm"}}</span>
+            <span class="badge badge-success ml-1">{{actuality.publicationDate | date:"HH:mm"}}</span>
         </div>
         <ul class="pagination justify-content-end col-sm-5 mx-0 px-0">
             <li class="page-item" [ngClass]="{'disabled' : actualityId == actualitiesIds[actualitiesIds.length-1]}">

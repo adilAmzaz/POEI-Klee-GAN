@@ -28,6 +28,16 @@ export class OrderService {
       this._router.navigate(['/log-in'])
     }
   }
+
+  addToBasket(product : Product) {
+    Basket.add(product)
+    if (LogInComponent.isConnected()) {
+      this._router.navigate(['/products'])
+    }
+    else {
+      this._router.navigate(['/log-in'])
+    }
+  }
   
   getCommands() : Observable<Command[]> {
     return this._http.get<Command[]>(GlobalConfig.getCommandsEndPoint);

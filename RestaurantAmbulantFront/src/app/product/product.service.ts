@@ -23,4 +23,8 @@ export class ProductService {
   {
     return this._http.post<Product>(GlobalConfig.serverUrl+"addproduct/", product);
   }
+
+  getProductsBetween(first: number, last: number) : Observable<Product[]> {
+    return this._http.get<Product[]>(GlobalConfig.productEndPoint + first + "/" + last)
+  }
 }

@@ -1,0 +1,15 @@
+<ngb-carousel *ngIf="products.length" class="mx-auto" 
+        style="width: {{width}}; height: {{height}}; border: none; cursor: pointer;" 
+        [keyboard]="false" [pauseOnHover]="true" [interval]="3000" 
+        [showNavigationArrows]="false" [showNavigationIndicators]="false"
+        #currSlide (click)="onSlideClicked(currSlide)">
+    <ng-template *ngFor="let product of products" ngbSlide [id]="product.productId">
+        <div class="picsum-img-wrapper">
+            <img src="{{endPoint}}{{product.imageRelativePath}}" alt="" 
+                    style="width: {{width}}; height: {{height}}; object-fit: cover">
+        </div>
+        <div class="carousel-caption">
+            <h4>{{product.label}}</h4>
+        </div>
+    </ng-template>
+</ngb-carousel>

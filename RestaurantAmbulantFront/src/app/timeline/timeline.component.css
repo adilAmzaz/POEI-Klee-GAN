@@ -10,7 +10,7 @@ body{
   .main-timeline-section .timeline-start,
   .main-timeline-section .timeline-end{
     position: absolute;
-    background:#F2635F;
+    background:rgb(206, 113, 109);
     border-radius:100px;
     top:50%;
     transform: translateY(-50%);
@@ -26,7 +26,7 @@ body{
     height:5px;
     top:50%;
     transform: translateY(-50%);
-    background:#F2635F;
+    background:rgb(206, 113, 109);
   }
   .timeline-article{
       width: 20%;
@@ -34,16 +34,26 @@ body{
       min-height: 300px;
       float:right;
   }
+
+  .content-line {
+    position: absolute;
+    left: -50px;
+    width: 100px;
+    height:5px;
+    top:50%;
+    transform: translateY(-50%);
+    background:rgb(189, 41, 36);
+  }
   .timeline-article .content-date{
       position: absolute;
       top: 35%;
-      left: -50px; 
+      left: -62px; 
       font-size:18px;
   }
   .timeline-article .content-dateFinish{
     position: absolute;
     top: 35%;
-    left: 50px; 
+    left: 38px; 
     font-size:18px;
 }
   .timeline-article .meta-date{
@@ -55,7 +65,7 @@ body{
       height:20px;
       border-radius: 100%;
       background:#fff;
-      border:1px solid #F2635F;
+      border:1px solid rgb(189, 41, 36);
   }
   .timeline-article .meta-dateFinish{
     position: absolute;
@@ -66,14 +76,15 @@ body{
     height:20px;
     border-radius: 100%;
     background:#fff;
-    border:1px solid #F2635F;
+    border:1px solid rgb(189, 41, 36);
 }
   .timeline-article .content-box{
     box-shadow: 2px 2px 4px 0px #c1c1c1;
-    border:1px solid #F2635F;
+    border:1px solid rgb(189, 41, 36);
     border-radius: 5px;
     background-color: #fff;
     width: 180px;
+    height: 55px;
     position: absolute;
     top: 60%;
     left: -80px; 
@@ -88,7 +99,7 @@ body{
     transform: translateX(-50%);
     top:-20px;
     border:10px solid transparent;
-    border-bottom-color: #F2635F;
+    border-bottom-color: rgb(189, 41, 36);
   }
   .timeline-article-bottom .content-date{
     top: 59%;
@@ -103,7 +114,7 @@ body{
     transform: translateX(-50%);
     bottom:-20px;
     border:10px solid transparent;
-    border-top-color:#F2635F;
+    border-top-color:rgb(189, 41, 36);
   }
   
   

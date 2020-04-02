@@ -7,11 +7,11 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-public class Product {
+public class Product implements Comparable<Product> {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int Id;
+	private int productId;
 	private String label;
 	private String imageRelativePath;
 	private String composition;
@@ -127,13 +127,13 @@ public class Product {
 	}
 
 
-	public int getId() {
-		return Id;
+	public int getProductId() {
+		return productId;
 	}
 
 
 	public void setId(int id) {
-		Id = id;
+		productId = id;
 	}
 
 
@@ -209,8 +209,8 @@ public class Product {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Product [getId()=");
-		builder.append(getId());
+		builder.append("Product [getProductId()=");
+		builder.append(getProductId());
 		builder.append(", getLabel()=");
 		builder.append(getLabel());
 		builder.append(", getImageRelativePath()=");
@@ -223,6 +223,12 @@ public class Product {
 		builder.append(getStock());
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+	@Override
+	public int compareTo(Product o) {
+		return ((Integer)o.count).compareTo(this.count);
 	}
 	
 }
