@@ -132,11 +132,7 @@ public class Product implements Comparable<Product> {
 	}
 
 
-<<<<<<< HEAD
 	public void setProductId(int id) {
-=======
-	public void setId(int id) {
->>>>>>> 18051abfa6aee1290516dfb6cf22158723099bb6
 		productId = id;
 	}
 
@@ -213,11 +209,7 @@ public class Product implements Comparable<Product> {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-<<<<<<< HEAD
-		builder.append("Product [getId()=");
-=======
 		builder.append("Product [getProductId()=");
->>>>>>> 18051abfa6aee1290516dfb6cf22158723099bb6
 		builder.append(getProductId());
 		builder.append(", getLabel()=");
 		builder.append(getLabel());
